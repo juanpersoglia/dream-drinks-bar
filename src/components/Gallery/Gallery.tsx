@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import ClientWrapper from '../ClientWrapper';
 
 // Imágenes de la galería desde assets locales
 const galleryImages = [
@@ -155,7 +154,6 @@ const Gallery = () => {
         )}
 
         {/* Lightbox */}
-        <ClientWrapper>
           <Lightbox
             open={isOpen}
             close={() => setIsOpen(false)}
@@ -168,7 +166,6 @@ const Gallery = () => {
               container: { backgroundColor: 'rgba(0, 0, 0, 0.9)' },
             }}
           />
-        </ClientWrapper>
       </div>
     </section>
   );

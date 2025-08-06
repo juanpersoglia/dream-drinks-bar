@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import Gallery from "@/components/Gallery";
+import Servicios from "@/components/Servicios";
 
 export default function Home() {
   return (
@@ -14,12 +15,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="servicios" className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-montserrat font-bold text-white mb-4">Servicios</h2>
-          <p className="text-lg font-montserrat font-medium text-gray-300">Contenido de la sección próximamente...</p>
-        </div>
-      </section>
+      <Servicios />
 
       <section id="cartas-cocteles" className="min-h-screen bg-gray-800 flex items-center justify-center">
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
