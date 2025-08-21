@@ -46,6 +46,7 @@ export const Header = () => {
                 height={80}
                 className="h-10 sm:h-12 lg:h-14 w-auto"
                 priority
+                quality={100}
               />
             </Link>
           </div>

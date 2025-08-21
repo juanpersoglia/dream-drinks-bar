@@ -20,6 +20,7 @@ export const Footer = () => {
                 width={120}
                 height={40}
                 className="h-10 w-auto"
+                quality={100}
               />
             </div>
             <p className="text-gray-400 font-montserrat text-sm leading-relaxed">

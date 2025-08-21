@@ -21,7 +21,7 @@ const barrasData = [
       "Ambiente sofisticado y elegante",
       "Detalles artesanales únicos"
     ],
-    imagen: "/assets/galery/oldschool.jpg"
+    imagen: "/assets/gallery/oldschool.jpg"
   },
   {
     titulo: "Barra Hexagonal",
@@ -33,7 +33,7 @@ const barrasData = [
       "Estilo contemporáneo y llamativo",
       "Optimizada para el flujo de servicio"
     ],
-    imagen: "/assets/galery/00024.jpg"
+    imagen: "/assets/gallery/00024.jpg"
   },
   {
     titulo: "Carrito Gintonero",
@@ -45,7 +45,7 @@ const barrasData = [
       "Perfecto para eventos outdoor",
       "Amplia selección de botánicos"
     ],
-    imagen: "/assets/galery/00030.jpg"
+    imagen: "/assets/gallery/00030.jpg"
   },
   {
     titulo: "Barra Espejada",
@@ -57,7 +57,7 @@ const barrasData = [
       "Perfecta para eventos de gala",
       "Refleja la iluminación del ambiente"
     ],
-    imagen: "/assets/galery/00063.jpg"
+    imagen: "/assets/gallery/00063.jpg"
   }
 ];
 
@@ -73,6 +73,7 @@ const BarraCard = ({ titulo, descripcion, caracteristicas, imagen, isReversed = 
             fill
             className="object-cover hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={100}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
         </div>
