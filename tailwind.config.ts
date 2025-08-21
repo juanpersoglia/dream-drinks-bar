@@ -33,6 +33,8 @@ export default {
           800: '#78350f',  // Ultra oscuro
           900: '#451a03',  // Negro dorado
         },
+        'black-primary': '#121212', // Fondo principal
+        'black-section': '#2A2626', // Fondo de secciones internas
       },
     },
   },

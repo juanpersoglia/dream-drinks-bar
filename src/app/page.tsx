@@ -1,44 +1,48 @@
-import Hero from "@/components/Hero";
-import Gallery from "@/components/Gallery";
-import Servicios from "@/components/Servicios";
+import Hero from "@/components/home/Hero";
+import Gallery from "@/components/home/Gallery";
+import Servicios from "@/components/home/Servicios";
+import NuestrasBarras from "@/components/home/NuestrasBarras";
+import CartasCocteles from "@/components/home/CartasCocteles";
+import QuienesSomos from "@/components/home/QuienesSomos";
+import Contacto from "@/components/home/Contacto";
+import Footer from "@/components/shared/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-black-primary text-white font-montserrat">
       <Hero />
-      
-      {/* Secciones temporales para navegación */}
-      <section id="quienes-somos" className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-montserrat font-bold text-white mb-4">Quienes Somos</h2>
-          <p className="text-lg font-montserrat font-medium text-gray-300">Contenido de la sección próximamente...</p>
-        </div>
-      </section>
+
+      {/* Línea divisora */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+
+      <QuienesSomos />
+
+      {/* Línea divisora */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
 
       <Servicios />
 
-      <section id="cartas-cocteles" className="min-h-screen bg-gray-800 flex items-center justify-center">
-        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-montserrat font-bold text-white mb-4">Cartas de Cócteles</h2>
-          <p className="text-lg font-montserrat font-medium text-gray-300">Contenido de la sección próximamente...</p>
-        </div>
-      </section>
+      {/* Línea divisora */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
 
-      <section id="nuestras-barras" className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-montserrat font-bold text-white mb-4">Nuestras Barras</h2>
-          <p className="text-lg font-montserrat font-medium text-gray-300">Contenido de la sección próximamente...</p>
-        </div>
-      </section>
+      <CartasCocteles />
+
+      {/* Línea divisora */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+
+      <NuestrasBarras />
+
+      {/* Línea divisora */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
 
       <Gallery />
 
-      <section id="contactos" className="min-h-screen bg-zinc-900 flex items-center justify-center">
-        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-montserrat font-bold text-white mb-4">Contactos</h2>
-          <p className="text-lg font-montserrat font-medium text-gray-300">Contenido de la sección próximamente...</p>
-        </div>
-      </section>
+      {/* Línea divisora */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+
+      <Contacto />
+      
+      <Footer />
     </main>
   );
 }

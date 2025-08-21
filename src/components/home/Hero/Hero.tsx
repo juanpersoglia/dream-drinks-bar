@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Hero = () => {
+export const Hero = () => {
   const whatsappNumber = '+5491112345678'; // Reemplaza con el número real
   const whatsappMessage = 'Hola! Me gustaría reservar una fecha para un evento con DreamDrinks.';
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -11,7 +11,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(/assets/oldschool.jpg)',
+          backgroundImage: 'url(/assets/coctel-ia.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
         }}
@@ -74,5 +74,3 @@ const Hero = () => {
     </section>
   );
 };
-
-export default Hero;

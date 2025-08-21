@@ -66,7 +66,7 @@ const ServicioCard = ({ titulo, descripcion, caracteristicas, imagen, isReversed
     <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-12 items-center`}>
       {/* Imagen */}
       <div className="w-full lg:w-1/2">
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+        <div className="relative aspect-[4/3] overflow-hidden shadow-2xl">
           <Image
             src={imagen}
             alt={titulo}
@@ -96,20 +96,14 @@ const ServicioCard = ({ titulo, descripcion, caracteristicas, imagen, isReversed
             </li>
           ))}
         </ul>
-
-        <div className="pt-4">
-          <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-montserrat font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-yellow-400/30">
-            Conocé Más
-          </button>
-        </div>
       </div>
     </div>
   );
 };
 
-const Servicios = () => {
+export const Servicios = () => {
   return (
-    <section id="servicios" className="py-20 bg-black">
+    <section id="servicios" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título de la sección */}
         <div className="text-center mb-16">
@@ -135,30 +129,7 @@ const Servicios = () => {
             />
           ))}
         </div>
-
-        {/* Call to Action */}
-        <div className="mt-20 text-center">
-          <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-8 lg:p-12 border border-gray-700">
-            <h3 className="text-3xl lg:text-4xl font-montserrat font-bold text-white mb-4">
-              ¿Listo para tu próximo evento?
-            </h3>
-            <p className="text-lg font-montserrat font-medium text-gray-300 mb-8 max-w-2xl mx-auto">
-              Contanos sobre tu evento y recibí una propuesta personalizada. 
-              Estamos aquí para hacer realidad la celebración de tus sueños.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-montserrat font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-yellow-400/30 w-full sm:w-auto">
-                Hacer Consulta
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-black font-montserrat font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 w-full sm:w-auto">
-                Ver Galería
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
 };
-
-export default Servicios;

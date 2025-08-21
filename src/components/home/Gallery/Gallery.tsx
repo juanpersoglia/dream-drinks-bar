@@ -75,7 +75,7 @@ const galleryImages = [
   },
 ];
 
-const Gallery = () => {
+export const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [showMore, setShowMore] = useState(false);
@@ -90,7 +90,7 @@ const Gallery = () => {
   };
 
   return (
-    <section id="galeria" className="py-16 bg-gray-900">
+    <section id="galeria" className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título de la sección */}
         <div className="text-center mb-12">
@@ -111,7 +111,7 @@ const Gallery = () => {
           {displayedPhotos.map((image, index) => (
             <div
               key={index}
-              className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square cursor-pointer"
+              className="relative group overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 aspect-square cursor-pointer"
               onClick={() => openLightbox(index)}
             >
               <Image
@@ -170,5 +170,3 @@ const Gallery = () => {
     </section>
   );
 };
-
-export default Gallery;

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const Header = () => {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const leftNavItems = [
@@ -111,4 +111,3 @@ const Header = () => {
   );
 };
 
-export default Header;
