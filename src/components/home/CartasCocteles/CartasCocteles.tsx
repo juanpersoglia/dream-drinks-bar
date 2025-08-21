@@ -25,7 +25,7 @@ const cartasData = [
       "Fernet con Coca • Destornillador",
     ],
     precio: "Desde $XX.XXX por persona",
-    imagen: "/assets/galery/coctail.jpg",
+    imagen: "/assets/cynar.jpg",
   },
   {
     titulo: "Carta Premium",
@@ -41,7 +41,7 @@ const cartasData = [
       "Garnish y decoración gourmet",
     ],
     precio: "Desde $XX.XXX por persona",
-    imagen: "/assets/galery/00064.jpg",
+    imagen: "/assets/trago-autor.jpg",
   },
   {
     titulo: "Carta Premium VIP",
@@ -58,7 +58,7 @@ const cartasData = [
       "Carta completamente customizable",
     ],
     precio: "Consultar cotización personalizada",
-    imagen: "/assets/galery/00088.jpg",
+    imagen: "/assets/jager.jpg",
   },
 ];
 

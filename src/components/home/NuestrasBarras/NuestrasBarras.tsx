@@ -21,7 +21,7 @@ const barrasData = [
       "Ambiente sofisticado y elegante",
       "Detalles artesanales únicos"
     ],
-    imagen: "/assets/gallery/oldschool.jpg"
+    imagen: "/assets/cartel.jpg"
   },
   {
     titulo: "Barra Hexagonal",
@@ -33,32 +33,33 @@ const barrasData = [
       "Estilo contemporáneo y llamativo",
       "Optimizada para el flujo de servicio"
     ],
-    imagen: "/assets/gallery/00024.jpg"
+    imagen: "/assets/hexagonal.jpg"
   },
   {
-    titulo: "Carrito Gintonero",
-    descripcion: "Especializado en gin tonics y cócteles con gin. Móvil y versátil, perfecto para eventos al aire libre o espacios donde se requiere flexibilidad en el montaje y un toque distintivo.",
+    titulo: "Gin Mobile",
+    descripcion: "Nuestro espectacular Gin Mobile inspirado en aires ingleses la rompe en cada evento.",
     caracteristicas: [
       "Especializado en gin y tónicos",
       "Completamente móvil",
       "Ideal para espacios reducidos",
-      "Perfecto para eventos outdoor",
-      "Amplia selección de botánicos"
+      "12 Botánicos",
+      "10 Toppings",
+      "Infusiones personalizadas"
     ],
-    imagen: "/assets/gallery/00030.jpg"
+    imagen: "/assets/carrito.jpg"
   },
-  {
-    titulo: "Barra Espejada",
-    descripcion: "Elegancia y glamour en estado puro. Los acabados espejados reflejan las luces del evento creando un ambiente mágico y sofisticado que deslumbra a todos los invitados con su brillo único.",
-    caracteristicas: [
-      "Acabados espejados de lujo",
-      "Efectos visuales únicos",
-      "Ambiente glamoroso",
-      "Perfecta para eventos de gala",
-      "Refleja la iluminación del ambiente"
-    ],
-    imagen: "/assets/gallery/00063.jpg"
-  }
+  // {
+  //   titulo: "Barra Espejada",
+  //   descripcion: "Elegancia y glamour en estado puro. Los acabados espejados reflejan las luces del evento creando un ambiente mágico y sofisticado que deslumbra a todos los invitados con su brillo único.",
+  //   caracteristicas: [
+  //     "Acabados espejados de lujo",
+  //     "Efectos visuales únicos",
+  //     "Ambiente glamoroso",
+  //     "Perfecta para eventos de gala",
+  //     "Refleja la iluminación del ambiente"
+  //   ],
+  //   imagen: "/assets/gallery/00063.jpg"
+  // }
 ];
 
 const BarraCard = ({ titulo, descripcion, caracteristicas, imagen, isReversed = false }: BarraProps) => {
