@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const Hero = () => {
-  const whatsappNumber = "+54937943479498"; // Reemplaza con el número real
+  const whatsappNumber = "+5493794347949"; // Reemplaza con el número real
   const whatsappMessage =
     "Hola! Me gustaría reservar una fecha para un evento con DreamDrinks.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(

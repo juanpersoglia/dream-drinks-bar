@@ -58,7 +58,7 @@ export const Footer = () => {
             <h3 className="text-white font-montserrat font-bold mb-4">Seguinos</h3>
             <div className="flex justify-center md:justify-end space-x-4 mb-4">
               <Link
-                href="https://instagram.com/dreamdrinks"
+                href="https://www.instagram.com/dreamdrinksbar/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-yellow-400 transition-all duration-300"
@@ -69,7 +69,7 @@ export const Footer = () => {
               </Link>
               
               <Link
-                href="https://facebook.com/dreamdrinks"
+                href="https://web.facebook.com/dreamdrinksbar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-yellow-400 transition-all duration-300"
@@ -79,7 +79,7 @@ export const Footer = () => {
                 </svg>
               </Link>
               
-              <Link
+              {/* <Link
                 href="https://tiktok.com/@dreamdrinks"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -88,7 +88,7 @@ export const Footer = () => {
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                 </svg>
-              </Link>
+              </Link> */}
             </div>
             
             
@@ -110,12 +110,12 @@ export const Footer = () => {
               <p className="text-gray-400 font-montserrat text-sm">
                 Desarrollado por{' '}
                 <Link 
-                  href="https://github.com/juansamuelfranco" 
+                  href="https://github.com/juanpersoglia" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-yellow-400 hover:text-yellow-300 font-medium transition-colors"
                 >
-                  Juan Samuel Franco
+                  Juan Salvador Persoglia
                 </Link>
               </p>
             </div>
