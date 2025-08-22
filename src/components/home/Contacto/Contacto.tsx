@@ -3,13 +3,13 @@
 import Link from "next/link";
 
 export const Contacto = () => {
-  const whatsappNumber = "+5491112345678"; // Reemplaza con el número real
+  const whatsappNumber = "+54937943479498"; // Reemplaza con el número real
   const whatsappMessage =
     "Hola! Me gustaría recibir más información sobre sus servicios de coctelería.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
   )}`;
-  const email = "info@dreamdrinks.com"; // Reemplaza con el email real
+  const email = "sebastianpersoglia@gmail.com"; // Reemplaza con el email real
 
   return (
     <section id="contactos" className="py-20">
