@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
@@ -79,14 +79,30 @@ export const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [showMore, setShowMore] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Detectar si estamos en desktop para habilitar el lightbox
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   // Mostrar solo las primeras 6 fotos inicialmente
   const initialPhotosCount = 6;
   const displayedPhotos = showMore ? galleryImages : galleryImages.slice(0, initialPhotosCount);
 
   const openLightbox = (index: number) => {
-    setPhotoIndex(index);
-    setIsOpen(true);
+    // Solo abrir lightbox en desktop
+    if (isDesktop) {
+      setPhotoIndex(index);
+      setIsOpen(true);
+    }
   };
 
   return (
@@ -101,9 +117,11 @@ export const Gallery = () => {
             Descubre algunos de nuestros eventos más memorables. Cada imagen cuenta la historia de momentos únicos creados con nuestros cócteles artesanales.
           </p>
           {/* Texto adicional para desktop */}
-          <p className="hidden md:block text-sm font-montserrat text-gray-400">
-            Haz clic en cualquier imagen para verla en pantalla completa
-          </p>
+          {isDesktop && (
+            <p className="text-sm font-montserrat text-gray-400">
+              Haz clic en cualquier imagen para verla en pantalla completa
+            </p>
+          )}
         </div>
 
         {/* Grid de fotos */}
@@ -111,7 +129,7 @@ export const Gallery = () => {
           {displayedPhotos.map((image, index) => (
             <div
               key={index}
-              className="relative group overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 aspect-square cursor-pointer"
+              className={`relative group overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 aspect-square ${isDesktop ? 'cursor-pointer' : ''}`}
               onClick={() => openLightbox(index)}
             >
               <Image
@@ -123,21 +141,23 @@ export const Gallery = () => {
                 quality={100}
               />
               {/* Overlay solo en desktop al hacer hover */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <svg
-                  className="w-12 h-12 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                  />
-                </svg>
-              </div>
+              {isDesktop && (
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <svg
+                    className="w-12 h-12 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                    />
+                  </svg>
+                </div>
+              )}
             </div>
           ))}
         </div>
