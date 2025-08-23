@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const Hero = () => {
   const whatsappNumber = "+5493794347949"; // Reemplaza con el número real
@@ -14,7 +15,7 @@ export const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url(/assets/coctel-ia.png)",
+          backgroundImage: "url(/assets/background-ia.png)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -25,11 +26,19 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold text-white mb-6 leading-tight">
-          <span className="">Dream Drinks</span>
-        </h1>
+        {/* Logo Section */}
+        <div className="relative w-70 h-35 sm:w-100 sm:h-50 md:w-120 md:h-60 mx-auto mb-8">
+          <Image
+            src='/assets/logos/complete-logo-white.PNG'
+            alt='DreamDrinks Logo'
+            fill
+            className="object-contain"
+            sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 384px"
+            quality={100}
+          />
+        </div>
 
-        <p className="text-lg sm:text-xl md:text-2xl font-montserrat font-medium text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-md sm:text-xl md:text-xl font-montserrat font-medium text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
           Sabemos que cada celebración tiene su propia esencia. Y por eso, cada
           propuesta que creamos es única, pensada a medida. Si estás organizando
           un evento y querés sumar una barra con presencia, diseño y servicio
@@ -41,7 +50,7 @@ export const Hero = () => {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-montserrat font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-yellow-400/30 flex items-center gap-2 w-full sm:w-auto justify-center"
+            className="border-2 border-white/70 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 font-montserrat font-medium py-3 px-6 rounded-lg text-base transition-all duration-300 flex items-center gap-2  sm:w-auto justify-center"
           >
             <svg
               className="w-6 h-6"
@@ -54,12 +63,7 @@ export const Hero = () => {
             Reservá tu fecha
           </Link>
 
-          <Link
-            href="#servicios"
-            className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-montserrat font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 w-full sm:w-auto text-center"
-          >
-            Conocer más
-          </Link>
+          
         </div>
       </div>
 

@@ -40,7 +40,7 @@ export const Header = () => {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
-                src="/assets/logo.png"
+                src="/assets/logos/logo-degradado.PNG"
                 alt="DreamDrinks Logo"
                 width={200}
                 height={80}
