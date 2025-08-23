@@ -1,109 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-
-// Imágenes de la galería desde assets locales
-const galleryImages = [
-  {
-    src: '/assets/gallery/00005.jpg',
-    alt: 'Evento DreamDrinks - Momento especial',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/00024.jpg',
-    alt: 'Celebración con cócteles artesanales',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/00025.jpg',
-    alt: 'Bar profesional en evento',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/00030.jpg',
-    alt: 'Experiencia única de cócteles',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/00060.jpg',
-    alt: 'Evento nocturno con DreamDrinks',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/00063.jpg',
-    alt: 'Bartender profesional en acción',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/00064.jpg',
-    alt: 'Servicio de bar móvil premium',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/00079.jpg',
-    alt: 'Ambiente festivo con cócteles',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/00088.jpg',
-    alt: 'Momentos únicos en eventos',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/coctail.jpg',
-    alt: 'Cóctel artesanal DreamDrints',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: '/assets/gallery/oldschool.jpg',
-    alt: 'Estilo clásico en eventos',
-    width: 800,
-    height: 600,
-  },
-];
+import { galleryImages } from './galleryImages';
+import { useGallery } from './useGallery';
 
 export const Gallery = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
-  const [showMore, setShowMore] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  // Detectar si estamos en desktop para habilitar el lightbox
-  useEffect(() => {
-    const checkIsDesktop = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-    
-    checkIsDesktop();
-    window.addEventListener('resize', checkIsDesktop);
-    
-    return () => window.removeEventListener('resize', checkIsDesktop);
-  }, []);
-
-  // Mostrar solo las primeras 6 fotos inicialmente
-  const initialPhotosCount = 6;
-  const displayedPhotos = showMore ? galleryImages : galleryImages.slice(0, initialPhotosCount);
-
-  const openLightbox = (index: number) => {
-    // Solo abrir lightbox en desktop
-    if (isDesktop) {
-      setPhotoIndex(index);
-      setIsOpen(true);
-    }
-  };
+  const {
+    isOpen,
+    photoIndex,
+    showMore,
+    isDesktop,
+    displayedPhotos,
+    openLightbox,
+    closeLightbox,
+    toggleShowMore,
+    hasMorePhotos,
+    remainingPhotosCount,
+  } = useGallery({ images: galleryImages, initialPhotosCount: 6 });
 
   return (
     <section id="galeria" className="py-16">
@@ -163,13 +78,13 @@ export const Gallery = () => {
         </div>
 
         {/* Botón Ver Más */}
-        {!showMore && galleryImages.length > initialPhotosCount && (
+        {!showMore && hasMorePhotos && (
           <div className="text-center">
             <button
-              onClick={() => setShowMore(true)}
+              onClick={toggleShowMore}
               className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-montserrat font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-yellow-400/30"
             >
-              Ver Más ({galleryImages.length - initialPhotosCount} fotos más)
+              Ver Más ({remainingPhotosCount} fotos más)
             </button>
           </div>
         )}
@@ -177,7 +92,7 @@ export const Gallery = () => {
         {/* Lightbox */}
           <Lightbox
             open={isOpen}
-            close={() => setIsOpen(false)}
+            close={closeLightbox}
             index={photoIndex}
             slides={galleryImages.map((image) => ({
               src: image.src,

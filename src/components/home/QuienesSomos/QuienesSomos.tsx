@@ -14,14 +14,6 @@ export const QuienesSomos = () => {
             , una empresa especializada en servicios de coctelería premium para
             eventos.
           </p>
-{/* 
-          <p className="text-lg font-montserrat font-medium text-gray-400 leading-relaxed">
-            Con años de experiencia en el mundo de la coctelería, nuestro equipo
-            de bartenders profesionales se dedica a crear momentos especiales a
-            través de cócteles artesanales y un servicio de excelencia. Desde
-            eventos íntimos hasta grandes celebraciones, adaptamos nuestro
-            servicio a las necesidades específicas de cada cliente.
-          </p> */}
 
           <p className="text-lg font-montserrat font-medium text-gray-400 leading-relaxed">
             Cada trago es una obra, cada evento una galería. Creamos

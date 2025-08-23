@@ -1,0 +1,65 @@
+import Image from "next/image";
+
+interface CartaProps {
+  titulo: string;
+  descripcion: string;
+  cocteles: string[];
+  precio: string;
+  imagen: string;
+  isReversed?: boolean;
+}
+
+export const CartaCard = ({
+  titulo,
+  descripcion,
+  cocteles,
+  imagen,
+  isReversed = false,
+}: CartaProps) => {
+  return (
+    <div
+      className={`flex flex-col ${
+        isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
+      } gap-8 lg:gap-12 items-center`}
+    >
+      {/* Imagen */}
+      <div className="w-full lg:w-1/2">
+        <div className="relative aspect-[4/3] overflow-hidden shadow-2xl">
+          <Image
+            src={imagen}
+            alt={titulo}
+            fill
+            className="object-cover hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        </div>
+      </div>
+
+      {/* Contenido */}
+      <div className="w-full lg:w-1/2 space-y-6">
+        <h3 className="text-3xl lg:text-4xl font-montserrat font-bold text-white">
+          {titulo}
+        </h3>
+
+        <p className="text-lg font-montserrat font-medium text-gray-300 leading-relaxed">
+          {descripcion}
+        </p>
+
+        <div className="space-y-4">
+          <h4 className="text-xl font-montserrat font-bold text-yellow-400">
+            Incluye:
+          </h4>
+          <ul className="space-y-3">
+            {cocteles.map((coctel, index) => (
+              <li key={index} className="flex items-start gap-3 text-gray-300">
+                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-2 flex-shrink-0"></div>
+                <span className="font-montserrat font-medium">{coctel}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
