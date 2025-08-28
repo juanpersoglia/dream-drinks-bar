@@ -82,7 +82,7 @@ export const Gallery = () => {
           <div className="text-center">
             <button
               onClick={toggleShowMore}
-              className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-montserrat font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-yellow-400/30"
+              className="max-w-xs mx-auto border-2 border-white/70 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 font-montserrat font-medium py-3 px-6 rounded-lg text-base transition-all duration-300 flex items-center gap-2 sm:w-auto justify-center"
             >
               Ver Más ({remainingPhotosCount} fotos más)
             </button>

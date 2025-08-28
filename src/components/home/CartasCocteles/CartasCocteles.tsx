@@ -48,7 +48,7 @@ export const CartasCocteles = () => {
               href="https://wa.me/+5493794347949?text=Hola!%20Me%20interesa%20una%20carta%20personalizada%20de%20cócteles%20para%20mi%20evento."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-8 py-4 rounded-lg font-montserrat font-bold text-lg hover:from-yellow-500 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105"
+              className="max-w-xs mx-auto border-2 border-white/70 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 font-montserrat font-medium py-3 px-6 rounded-lg text-base transition-all duration-300 flex items-center gap-2 sm:w-auto justify-center"
             >
               Solicitar carta personalizada
             </a>

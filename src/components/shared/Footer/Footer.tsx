@@ -15,7 +15,7 @@ export const Footer = () => {
           <div className="text-center md:text-left">
             <div className="flex justify-center md:justify-start mb-4">
               <Image
-                src="/assets/logo.png"
+                src="/assets/logos/logo-degradado.PNG"
                 alt="DreamDrinks Logo"
                 width={120}
                 height={40}
