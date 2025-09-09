@@ -14,7 +14,6 @@ export default function Home() {
   return (
     <main className="bg-black-primary text-white font-montserrat">
       <Hero />
-      <LineDivider />
       <QuienesSomos />
       <LineDivider />
       <Servicios />
