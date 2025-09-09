@@ -25,15 +25,15 @@ export const Gallery = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título de la sección */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-montserrat font-bold text-white mb-4">
+          <h2 className="text-white mb-4">
             Galería
           </h2>
-          <p className="text-lg font-montserrat font-medium text-gray-300 max-w-2xl mx-auto mb-4">
+          <p className="text-gray-300 mx-auto mb-4">
             Descubre algunos de nuestros eventos más memorables. Cada imagen cuenta la historia de momentos únicos creados con nuestros cócteles artesanales.
           </p>
           {/* Texto adicional para desktop */}
           {isDesktop && (
-            <p className="text-sm font-montserrat text-gray-400">
+            <p className="text-sm text-gray-400">
               Haz clic en cualquier imagen para verla en pantalla completa
             </p>
           )}

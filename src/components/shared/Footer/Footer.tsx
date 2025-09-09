@@ -23,14 +23,14 @@ export const Footer = () => {
                 quality={100}
               />
             </div>
-            <p className="text-gray-400 font-montserrat text-sm leading-relaxed">
+            <p className="text-gray-400 leading-relaxed">
               Coctelería premium para eventos únicos e inolvidables.
             </p>
           </div>
 
           {/* Enlaces rápidos */}
           <div className="text-center">
-            <h3 className="text-white font-montserrat font-bold mb-4">Enlaces</h3>
+            <h2 className="mb-4">Enlaces</h2>
             <nav className="flex flex-col space-y-2">
               <Link href="#quienes-somos" className="text-gray-400 hover:text-yellow-400 font-montserrat text-sm transition-colors">
                 Quiénes Somos
@@ -55,7 +55,7 @@ export const Footer = () => {
 
           {/* Redes sociales */}
           <div className="text-center md:text-right">
-            <h3 className="text-white font-montserrat font-bold mb-4">Seguinos</h3>
+            <h2 className="mb-4">Seguinos</h2>
             <div className="flex justify-center md:justify-end space-x-4 mb-4">
               <Link
                 href="https://www.instagram.com/dreamdrinksbar/"
@@ -101,7 +101,7 @@ export const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-center md:text-left">
-              <p className="text-gray-400 font-montserrat text-sm">
+              <p className="text-gray-400">
                 © {currentYear} DreamDrinks. Todos los derechos reservados.
               </p>
             </div>

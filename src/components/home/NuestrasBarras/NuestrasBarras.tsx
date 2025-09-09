@@ -31,11 +31,11 @@ const BarraCard = ({ titulo, descripcion, caracteristicas, imagen, isReversed = 
 
       {/* Contenido */}
       <div className="w-full lg:w-1/2 space-y-6">
-        <h3 className="text-3xl lg:text-4xl font-montserrat font-bold text-white">
+        <h2>
           {titulo}
-        </h3>
+        </h2>
         
-        <p className="text-lg font-montserrat font-medium text-gray-300 leading-relaxed">
+        <p className="text-gray-300 leading-relaxed">
           {descripcion}
         </p>
 
@@ -43,7 +43,7 @@ const BarraCard = ({ titulo, descripcion, caracteristicas, imagen, isReversed = 
           {caracteristicas.map((caracteristica, index) => (
             <li key={index} className="flex items-start gap-3 text-gray-300">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-2 flex-shrink-0"></div>
-              <span className="font-montserrat font-medium">{caracteristica}</span>
+              <p>{caracteristica}</p>
             </li>
           ))}
         </ul>
@@ -58,10 +58,10 @@ export const NuestrasBarras = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título de la sección */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6">
+          <h2 className="mb-6">
             Nuestras Barras
           </h2>
-          <p className="text-xl font-montserrat font-medium text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Cada evento es único y merece una barra que refleje su personalidad. Descubrí nuestras diferentes 
             opciones de barras, desde lo clásico hasta lo más vanguardista, diseñadas para crear la experiencia perfecta.
           </p>

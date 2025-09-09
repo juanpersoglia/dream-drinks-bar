@@ -38,11 +38,11 @@ export const CartaCard = ({
 
       {/* Contenido */}
       <div className="w-full lg:w-1/2 space-y-6">
-        <h3 className="text-3xl lg:text-4xl font-montserrat font-bold text-white">
+        <h2>
           {titulo}
-        </h3>
+        </h2>
 
-        <p className="text-lg font-montserrat font-medium text-gray-300 leading-relaxed">
+        <p className="text-gray-300 leading-relaxed">
           {descripcion}
         </p>
 
@@ -54,7 +54,7 @@ export const CartaCard = ({
             {cocteles.map((coctel, index) => (
               <li key={index} className="flex items-start gap-3 text-gray-300">
                 <div className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-2 flex-shrink-0"></div>
-                <span className="font-montserrat font-medium">{coctel}</span>
+                <p>{coctel}</p>
               </li>
             ))}
           </ul>

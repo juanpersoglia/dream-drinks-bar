@@ -9,10 +9,10 @@ export const Servicios = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título de la sección */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6">
+          <h2 className="mb-6">
             Nuestros Servicios
           </h2>
-          <p className="text-xl font-montserrat font-medium text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Transformamos cada celebración en una experiencia única. Desde
             eventos íntimos hasta grandes celebraciones, tenemos el servicio
             perfecto para hacer de tu evento algo inolvidable.

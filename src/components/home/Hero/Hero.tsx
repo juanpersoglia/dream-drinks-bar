@@ -38,7 +38,7 @@ export const Hero = () => {
           />
         </div>
 
-        <p className="text-md sm:text-xl md:text-xl font-montserrat font-medium text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
           Sabemos que cada celebración tiene su propia esencia. Y por eso, cada
           propuesta que creamos es única, pensada a medida. Si estás organizando
           un evento y querés sumar una barra con presencia, diseño y servicio
