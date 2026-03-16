@@ -12,11 +12,11 @@ export const Servicios = () => {
           <h2 className="mb-6">
             Nuestros Servicios
           </h2>
-          <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          {/* <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Transformamos cada celebración en una experiencia única. Desde
             eventos íntimos hasta grandes celebraciones, tenemos el servicio
             perfecto para hacer de tu evento algo inolvidable.
-          </p>
+          </p> */}
         </div>
 
         {/* Grid de servicios */}
@@ -26,7 +26,7 @@ export const Servicios = () => {
               key={index}
               titulo={servicio.titulo}
               descripcion={servicio.descripcion}
-              caracteristicas={servicio.caracteristicas}
+              // caracteristicas={servicio.caracteristicas}
               imagen={servicio.imagen}
               isReversed={index % 2 === 1}
             />

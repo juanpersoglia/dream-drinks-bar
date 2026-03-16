@@ -17,8 +17,8 @@ export default function Home() {
       <QuienesSomos />
       <LineDivider />
       <Servicios />
-      <LineDivider />
-      <CartasCocteles />
+      {/* <LineDivider /> */}
+      {/* <CartasCocteles /> */}
       <LineDivider />
       <NuestrasBarras />
       <LineDivider />

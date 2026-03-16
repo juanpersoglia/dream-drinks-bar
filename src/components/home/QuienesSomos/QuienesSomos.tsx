@@ -10,14 +10,15 @@ export const QuienesSomos = () => {
 
         <div className="space-y-6">
           <p className="text-gray-300 leading-relaxed">
-            Somos <span className="font-bold">Dream Drinks</span>, una empresa especializada en servicios de coctelería premium para
-            eventos.
+            Somos <span className="font-bold">Dream Drinks</span> Barras creamos experiencias de coctelería diseñadas a medida. No buscamos masividad: cada evento, cada cliente y cada invitado es único. Nuestra esencia está en combinar técnica, estética y productos de calidad con una hospitalidad auténtica.
           </p>
 
           <p className="text-gray-400 leading-relaxed">
-            Cada trago es una obra, cada evento una galería. Creamos
-            experiencias sensoriales donde el sabor y la estética van de la
-            mano. Dream Drinks: más que coctelería, una experiencia.
+            Nuestros bartenders no solo preparan cócteles; reciben, acompañan y elevan la experiencia con un servicio cálido y profesional. Cuidamos cada detalle —desde la propuesta inicial hasta el último trago servido— para que la barra se convierta en un momento memorable del evento.
+          </p>
+
+          <p className="text-gray-300 leading-relaxed">
+            Somos una empresa que apuesta por la exclusividad, la dedicación artesanal y la excelencia en el trato humano.
           </p>
         </div>
       </div>

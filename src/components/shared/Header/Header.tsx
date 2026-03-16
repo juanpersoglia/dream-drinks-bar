@@ -10,11 +10,10 @@ export const Header = () => {
   const leftNavItems = [
     { href: '#quienes-somos', label: 'Quienes somos' },
     { href: '#servicios', label: 'Servicios' },
-    { href: '#cartas-cocteles', label: 'Cartas' },
   ];
 
   const rightNavItems = [
-    { href: '#nuestras-barras', label: 'Nuestras barras' },
+    { href: '#nuestras-barras', label: 'Barras' },
     { href: '#galeria', label: 'Galería' },
     { href: '#contactos', label: 'Contactos' },
   ];

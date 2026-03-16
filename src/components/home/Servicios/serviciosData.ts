@@ -1,7 +1,7 @@
 export const serviciosData = [
   {
-    titulo: "Bar en tu Evento",
-    descripcion: "No ofrecemos barras estándar. Creamos experiencias personalizadas. Cada evento es distinto, y por eso nuestro servicio también lo es. En Dreamdrinks armamos tu barra a medida:",
+    titulo: "Eventos Sociales y Empresariales",
+    descripcion: "Diseño y operación de barras para eventos sociales y corporativos: bodas, fiestas de 15, celebraciones de fin de año, cumpleaños y eventos empresariales, adaptados a cada ocasión.",
     caracteristicas: [
       "Bartenders profesionales",
       "Tragos que se adaptan a tus gustos",
@@ -11,8 +11,8 @@ export const serviciosData = [
     imagen: "/assets/bar-en-tu-evento.jpg"
   },
   {
-    titulo: "Cocktail Workshops - Capacitación",
-    descripcion: "Servicio de Workshops de Coctelería, donde capacitamos a tu personal para aprender a hacer cócteles clásicos y, por supuesto, degustarlos! Una experiencia única.",
+    titulo: "Capacitación y Asesoramiento",
+    descripcion: "Brindamos formación y acompañamiento a bares y restaurantes para optimizar el servicio de barra y profesionalizar equipos de trabajo.",
     caracteristicas: [
       "Aprendizaje de cócteles clásicos",
       "Práctica y teoría incluida",
@@ -22,8 +22,8 @@ export const serviciosData = [
     imagen: "/assets/capacitacion.jpg"
   },
   {
-    titulo: "Catas y Degustaciones",
-    descripcion: "Creamos una propuesta a tu medida: bodas, 15, eventos sociales o empresariales. Siempre con la máxima calidad y un precio que se adapta a vos.",
+    titulo: "Mixología & Cartas de Cócteles",
+    descripcion: "Creación de cartas alineadas con la identidad y la operatividad de cada espacio.",
     caracteristicas: [
      
     ],

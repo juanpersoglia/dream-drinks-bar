@@ -3,7 +3,7 @@ import Image from "next/image";
 interface ServicioProps {
   titulo: string;
   descripcion: string;
-  caracteristicas: string[];
+  caracteristicas?: string[];
   imagen: string;
   isReversed?: boolean;
 }
@@ -45,7 +45,7 @@ export const ServicioCard = ({
         <p className=" text-gray-300 leading-relaxed">{descripcion}</p>
 
         <ul className="space-y-3">
-          {caracteristicas.map((caracteristica, index) => (
+          {caracteristicas?.map((caracteristica, index) => (
             <li key={index} className="flex items-start gap-3 text-gray-300">
 
               <div className="w-1 h-1 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-2 flex-shrink-0"></div>

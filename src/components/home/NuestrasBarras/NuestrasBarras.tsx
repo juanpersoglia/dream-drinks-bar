@@ -4,22 +4,42 @@ import Image from 'next/image';
 import { barrasData } from './barrasData';
 
 interface BarraProps {
-  titulo: string;
-  descripcion: string;
-  caracteristicas: string[];
-  imagen: string;
+  titulo?: string;
+  descripcion?: string;
+  caracteristicas?: string[];
+  imagen?: string;
   isReversed?: boolean;
 }
 
-const BarraCard = ({ titulo, descripcion, caracteristicas, imagen, isReversed = false }: BarraProps) => {
+export const NuestrasBarras = () => {
   return (
-    <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-12 items-center`}>
+    <section id="nuestras-barras" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={`flex flex-col lg:flex-row gap-8 lg:gap-12 items-center text-center mb-16`}>
+       {/* Contenido */}
+      <div className="w-full lg:w-1/2 space-y-6">
+        <h2>
+          ESTÉTICA Y BARRAS
+        </h2>
+        
+        <p className="text-gray-300 leading-relaxed">
+          Contamos con una selección de barras diseñadas para integrarse de forma armónica a la estética de cada evento.
+        </p>
+
+        <p className="text-gray-300 leading-relaxed">
+         Cada propuesta combina diseño, funcionalidad y presencia visual, convirtiendo la barra en un elemento central de la experiencia.
+        </p>
+
+        <p className="text-gray-300 leading-relaxed">
+          Cuidamos cada detalle para que la barra no solo acompañe el evento, sino que lo eleve.
+        </p>
+
+      </div>
       {/* Imagen */}
       <div className="w-full lg:w-1/2">
         <div className="relative aspect-[4/3]  overflow-hidden shadow-2xl">
           <Image
-            src={imagen}
-            alt={titulo}
+            src={'/assets/hexagonal.jpg'}
+            alt={'ESTÉTICA Y BARRAS'}
             fill
             className="object-cover hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -29,58 +49,8 @@ const BarraCard = ({ titulo, descripcion, caracteristicas, imagen, isReversed = 
         </div>
       </div>
 
-      {/* Contenido */}
-      <div className="w-full lg:w-1/2 space-y-6">
-        <h2>
-          {titulo}
-        </h2>
-        
-        <p className="text-gray-300 leading-relaxed">
-          {descripcion}
-        </p>
-
-        <ul className="space-y-3">
-          {caracteristicas.map((caracteristica, index) => (
-            <li key={index} className="flex items-start gap-3 text-gray-300">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-2 flex-shrink-0"></div>
-              <p>{caracteristica}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+     
     </div>
-  );
-};
-
-export const NuestrasBarras = () => {
-  return (
-    <section id="nuestras-barras" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Título de la sección */}
-        <div className="text-center mb-16">
-          <h2 className="mb-6">
-            Nuestras Barras
-          </h2>
-          <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Cada evento es único y merece una barra que refleje su personalidad. Descubrí nuestras diferentes 
-            opciones de barras, desde lo clásico hasta lo más vanguardista, diseñadas para crear la experiencia perfecta.
-          </p>
-        </div>
-
-        {/* Grid de barras */}
-        <div className="space-y-24 lg:space-y-32">
-          {barrasData.map((barra, index) => (
-            <BarraCard
-              key={index}
-              titulo={barra.titulo}
-              descripcion={barra.descripcion}
-              caracteristicas={barra.caracteristicas}
-              imagen={barra.imagen}
-              isReversed={index % 2 === 1}
-            />
-          ))}
-        </div>
-      </div>
     </section>
   );
 };
