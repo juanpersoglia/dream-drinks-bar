@@ -1,7 +1,12 @@
+"use client";
+
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
   const whatsappNumber = "+5493794347949"; // Reemplaza con el número real
   const whatsappMessage =
     "Hola! Me gustaría reservar una fecha para un evento con DreamDrinks.";
@@ -11,14 +16,39 @@ export const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center">
+      {/* Loader — visible until video can play */}
+      <div
+        className={`absolute inset-0 z-20 bg-black flex flex-col items-center justify-center gap-6 transition-opacity duration-700 ${
+          videoReady ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
+        <div className="relative w-28 h-14">
+          <Image
+            src="/assets/logos/logo-degradado.PNG"
+            alt="DreamDrinks"
+            fill
+            className="object-contain"
+            priority
+            quality={100}
+          />
+        </div>
+        <div className="flex gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-bounce [animation-delay:0ms]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-bounce [animation-delay:150ms]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-bounce [animation-delay:300ms]" />
+        </div>
+      </div>
+
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 overflow-hidden">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
+          onCanPlay={() => setVideoReady(true)}
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/assets/videos/0701.mp4" type="video/mp4" />
