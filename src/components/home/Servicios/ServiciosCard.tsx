@@ -30,7 +30,7 @@ export const ServicioCard = ({
             fill // esta prop hace que la imagen ocupe todo el contenedor padre
             className="object-cover hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 1024px) 100vw, 50vw"
-            quality={100}
+            quality={80}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
         </div>

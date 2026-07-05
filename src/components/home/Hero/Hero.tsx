@@ -18,6 +18,8 @@ export const Hero = () => {
           muted
           loop
           playsInline
+          preload="metadata"
+          poster="/assets/background-ia.png"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/assets/videos/0701.mov" type="video/mp4" />
