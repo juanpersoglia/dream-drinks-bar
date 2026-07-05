@@ -1,44 +1,26 @@
 export const serviciosData = [
   {
-    titulo: "Eventos Sociales y Empresariales",
-    descripcion: "Diseño y operación de barras para eventos sociales y corporativos: bodas, fiestas de 15, celebraciones de fin de año, cumpleaños y eventos empresariales, adaptados a cada ocasión.",
+    titulo: "Barras para Eventos Sociales",
+    descripcion:
+      "Diseñamos y operamos barras para bodas, fiestas de 15, cumpleaños y celebraciones de todo tipo. Traemos la barra, el equipo, los insumos y la experiencia. Vos solo disfrutás con tus invitados.",
     caracteristicas: [
-      "Bartenders profesionales",
-      "Tragos que se adaptan a tus gustos",
-      "Estética pensada para tu ambientación",
-      "Atención cercana, profesional y dedicada",
+      "Bartenders profesionales incluidos",
+      "Carta de cócteles clásicos y de autor",
+      "Barra, cristalería e insumos incluidos",
+      "Servicio de 8 horas",
     ],
-    imagen: "/assets/bar-en-tu-evento.jpg"
+    imagen: "/assets/bar-en-tu-evento.jpg",
   },
   {
-    titulo: "Capacitación y Asesoramiento",
-    descripcion: "Brindamos formación y acompañamiento a bares y restaurantes para optimizar el servicio de barra y profesionalizar equipos de trabajo.",
+    titulo: "Barras para Eventos Empresariales",
+    descripcion:
+      "Desde cierres de año hasta lanzamientos de producto, la barra es el centro de cualquier evento corporativo. Adaptamos la propuesta a tu imagen de marca y al perfil de tu audiencia.",
     caracteristicas: [
-      "Aprendizaje de cócteles clásicos",
-      "Práctica y teoría incluida",
-      "Para grupos de 8 a 12 personas",
-      "Experiencia interactiva única"
+      "Personalización con identidad de marca",
+      "Cócteles sin alcohol disponibles",
+      "Montaje y desmontaje discreto",
+      "Personal con uniforme y protocolo",
     ],
-    imagen: "/assets/capacitacion.jpg"
+    imagen: "/assets/coctail.jpg",
   },
-  {
-    titulo: "Mixología & Cartas de Cócteles",
-    descripcion: "Creación de cartas alineadas con la identidad y la operatividad de cada espacio.",
-    caracteristicas: [
-     
-    ],
-    imagen: "/assets/coctail.jpg"
-  },
-  // {
-  //   titulo: "Catering Premium",
-  //   descripcion: "Ahora podés tener en tu evento nuestra coctelería de alto nivel junto con gastronomía exclusiva. Agasajá a tus invitados y llevá tu evento al siguiente nivel con nuestra propuesta integral.",
-  //   caracteristicas: [
-  //     "Coctelería de alto nivel",
-  //     "Gastronomía exclusiva",
-  //     "Para grupos de 50 a 150 personas",
-  //     "Eventos en CABA y GBA",
-  //     "Casamientos, cumpleaños y eventos corporativos"
-  //   ],
-  //   imagen: "/assets/oldschool.jpg"
-  // }
 ];

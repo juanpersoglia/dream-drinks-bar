@@ -32,20 +32,17 @@ export const Footer = () => {
           <div className="text-center">
             <h2 className="mb-4">Enlaces</h2>
             <nav className="flex flex-col space-y-2">
-              <Link href="#quienes-somos" className="text-gray-400 hover:text-yellow-400 font-montserrat text-sm transition-colors">
-                Quiénes Somos
-              </Link>
               <Link href="#servicios" className="text-gray-400 hover:text-yellow-400 font-montserrat text-sm transition-colors">
                 Servicios
-              </Link>
-              <Link href="#cartas-cocteles" className="text-gray-400 hover:text-yellow-400 font-montserrat text-sm transition-colors">
-                Cartas de Cócteles
               </Link>
               <Link href="#nuestras-barras" className="text-gray-400 hover:text-yellow-400 font-montserrat text-sm transition-colors">
                 Nuestras Barras
               </Link>
               <Link href="#galeria" className="text-gray-400 hover:text-yellow-400 font-montserrat text-sm transition-colors">
                 Galería
+              </Link>
+              <Link href="#testimonios" className="text-gray-400 hover:text-yellow-400 font-montserrat text-sm transition-colors">
+                Testimonios
               </Link>
               <Link href="#contactos" className="text-gray-400 hover:text-yellow-400 font-montserrat text-sm transition-colors">
                 Contacto

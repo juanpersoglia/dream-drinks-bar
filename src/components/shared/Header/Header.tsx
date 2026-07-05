@@ -8,20 +8,20 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const leftNavItems = [
-    { href: '#quienes-somos', label: 'Quienes somos' },
     { href: '#servicios', label: 'Servicios' },
+    { href: '#nuestras-barras', label: 'Barras' },
   ];
 
   const rightNavItems = [
-    { href: '#nuestras-barras', label: 'Barras' },
     { href: '#galeria', label: 'Galería' },
-    { href: '#contactos', label: 'Contactos' },
+    { href: '#testimonios', label: 'Testimonios' },
+    { href: '#contactos', label: 'Contacto' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/10 backdrop-blur-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <nav className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8">
+        <div className="relative flex items-center justify-between h-16 lg:h-20">
           {/* Left Navigation - Hidden on mobile */}
           <div className="hidden lg:flex space-x-8">
             {leftNavItems.map((item) => (
@@ -35,8 +35,8 @@ export const Header = () => {
             ))}
           </div>
 
-          {/* Logo */}
-          <div className="flex-shrink-0">
+          {/* Logo — absolutely centered on desktop */}
+          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2">
             <Link href="/" className="flex items-center">
               <Image
                 src="/assets/logos/logo-degradado.PNG"
@@ -44,6 +44,21 @@ export const Header = () => {
                 width={200}
                 height={80}
                 className="h-10 sm:h-12 lg:h-14 w-auto"
+                priority
+                quality={100}
+              />
+            </Link>
+          </div>
+
+          {/* Logo — visible only on mobile, left-aligned */}
+          <div className="lg:hidden flex-shrink-0">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/assets/logos/logo-degradado.PNG"
+                alt="DreamDrinks Logo"
+                width={200}
+                height={80}
+                className="h-10 w-auto"
                 priority
                 quality={100}
               />

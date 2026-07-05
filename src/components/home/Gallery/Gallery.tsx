@@ -21,7 +21,7 @@ export const Gallery = () => {
   } = useGallery({ images: galleryImages, initialPhotosCount: 6 });
 
   return (
-    <section id="galeria" className="py-16">
+    <section id="galeria" className="py-16 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título de la sección */}
         <div className="text-center mb-12">

@@ -1,30 +1,35 @@
 import { Hero } from "@/components/home/Hero";
-import { Gallery } from "@/components/home/Gallery";
+import { QuienesSomos } from "@/components/home/QuienesSomos";
+import { Metodo } from "@/components/home/Metodo";
 import { Servicios } from "@/components/home/Servicios";
 import { NuestrasBarras } from "@/components/home/NuestrasBarras";
-import { CartasCocteles } from "@/components/home/CartasCocteles";
-import { QuienesSomos } from "@/components/home/QuienesSomos";
+import { Gallery } from "@/components/home/Gallery";
+import { Testimonios } from "@/components/home/Testimonios";
 import { Contacto } from "@/components/home/Contacto";
-
-const LineDivider = () => (
-  <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent my-8"></div>
-);
+import { Anexo } from "@/components/home/Anexo";
 
 export default function Home() {
   return (
-    <main className="bg-black-primary text-white font-montserrat">
+    <main className="text-white font-montserrat">
+      {/* bg-black */}
       <Hero />
+      {/* bg-zinc-950 */}
       <QuienesSomos />
-      <LineDivider />
+      {/* bg-black */}
+       {/*<Metodo />
+      bg-zinc-950 */}
       <Servicios />
-      {/* <LineDivider /> */}
-      {/* <CartasCocteles /> */}
-      <LineDivider />
+      {/* bg-black */}
       <NuestrasBarras />
-      <LineDivider />
+      {/* bg-zinc-950 */}
+      <Testimonios />
+      {/* bg-zinc-950 */}
       <Gallery />
-      <LineDivider />
+      
+      {/* bg-black */}
       <Contacto />
+      {/* bg-black with border-t */}
+      <Anexo />
     </main>
   );
 }

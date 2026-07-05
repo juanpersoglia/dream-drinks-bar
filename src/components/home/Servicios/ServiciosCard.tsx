@@ -48,7 +48,7 @@ export const ServicioCard = ({
           {caracteristicas?.map((caracteristica, index) => (
             <li key={index} className="flex items-start gap-3 text-gray-300">
 
-              <div className="w-1 h-1 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-2 flex-shrink-0"></div>
+              <div className="w-1 h-1 rounded-full bg-white mt-2 flex-shrink-0"></div>
               <p>{caracteristica}</p>
             </li>
           ))}

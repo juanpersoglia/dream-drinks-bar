@@ -8,10 +8,17 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* 80px — altura del header fijo en desktop */
+}
+
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: 4rem; /* 64px — altura del header fijo en mobile */
+  }
 }
 
 body {
-  background: var(--background);
+  background: #000000;
   color: var(--foreground);
   font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
   font-weight: 600;
@@ -37,11 +44,11 @@ p {
 
 h2 {
   font-family: var(--font-montserrat);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 19px;
   font-size: medium;
   font-style: normal;
-  text-transform: uppercase;
+
   color: #ffffff;
 }
 
