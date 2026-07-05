@@ -22,7 +22,7 @@ export const Hero = () => {
           poster="/assets/background-ia.png"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/assets/videos/0701.mov" type="video/mp4" />
+          <source src="/assets/videos/0701.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/60"></div>
