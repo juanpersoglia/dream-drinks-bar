@@ -72,7 +72,7 @@ export const Testimonios = () => {
                   <StarIcon key={j} />
                 ))}
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed flex-1">"{t.texto}"</p>
+              <p className="text-gray-400 text-sm leading-relaxed flex-1">&ldquo;{t.texto}&rdquo;</p>
               <div>
                 <p className="text-white text-sm font-bold">{t.nombre}</p>
                 <p className="text-yellow-400/70 text-xs">{t.evento}</p>

@@ -6,8 +6,6 @@ export const Contacto = () => {
   const whatsappMessage =
     "Hola! Me gustaría cotizar una barra para mi evento con Dream Drinks.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-  const email = "sebastianpersoglia@gmail.com";
-
   return (
     <section id="contactos" className="py-24 bg-zinc-950">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

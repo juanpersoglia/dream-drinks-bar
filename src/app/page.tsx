@@ -1,6 +1,5 @@
 import { Hero } from "@/components/home/Hero";
 import { QuienesSomos } from "@/components/home/QuienesSomos";
-import { Metodo } from "@/components/home/Metodo";
 import { Servicios } from "@/components/home/Servicios";
 import { NuestrasBarras } from "@/components/home/NuestrasBarras";
 import { Gallery } from "@/components/home/Gallery";
