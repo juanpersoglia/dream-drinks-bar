@@ -22,6 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        <link
+          rel="preload"
+          href="/assets/videos/0701.mp4"
+          as="video"
+          type="video/mp4"
+        />
+      </head>
       <body className={montserrat.className} suppressHydrationWarning={true}>
         <Header />
         {children}
