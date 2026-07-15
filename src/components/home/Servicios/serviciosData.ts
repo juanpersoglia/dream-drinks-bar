@@ -1,26 +1,46 @@
 export const serviciosData = [
   {
-    titulo: "Barras para Eventos Sociales",
+    titulo: "Octogonal (Isla)",
     descripcion:
-      "Diseñamos y operamos barras para bodas, fiestas de 15, cumpleaños y celebraciones de todo tipo. Traemos la barra, el equipo, los insumos y la experiencia. Vos solo disfrutás con tus invitados.",
-    caracteristicas: [
-      "Bartenders profesionales incluidos",
-      "Carta de cócteles clásicos y de autor",
-      "Barra, cristalería e insumos incluidos",
-      "Servicio de 8 horas",
-    ],
-    imagen: "/assets/bar-en-tu-evento.jpg",
+      "Diseño de atención 360°, ideal para convertirse en el centro del evento y atender grandes cantidades de invitados.",
+
+    imagen: "/assets/barraLinda.jpeg",
   },
   {
-    titulo: "Barras para Eventos Empresariales",
+    titulo: "New York (Isla)",
     descripcion:
-      "Desde cierres de año hasta lanzamientos de producto, la barra es el centro de cualquier evento corporativo. Adaptamos la propuesta a tu imagen de marca y al perfil de tu audiencia.",
-    caracteristicas: [
-      "Personalización con identidad de marca",
-      "Cócteles sin alcohol disponibles",
-      "Montaje y desmontaje discreto",
-      "Personal con uniforme y protocolo",
-    ],
-    imagen: "/assets/coctail.jpg",
+      "Inspirada en el estilo industrial neoyorquino, combina carácter, diseño y funcionalidad en una configuración central.",
+
+    imagen: "/assets/barraLinda.jpeg",
   },
+  {
+    titulo: "Vintage",
+    descripcion:
+      "Un diseño cálido y atemporal, ideal para bodas, eventos campestres y celebraciones con estilo clásico.",
+    imagen: "/assets/barraLinda.jpeg",
+  },
+  {
+    titulo: "Ondulante (Lineal)",
+    descripcion:
+      "Diseño contemporáneo con líneas curvas que aportan movimiento y elegancia. Perfecta para eventos modernos.",
+    imagen: "/assets/barraLinda.jpeg",
+  },
+  {
+    titulo: "Gold",
+    descripcion:
+      "Acabados dorados que transmiten sofisticación y exclusividad.",
+    imagen: "/assets/barraLinda.jpeg",
+  },
+  {
+    titulo: "Black Level",
+    descripcion:
+      "Estética minimalista en negro, de gran presencia visual, ideal para eventos premium y corporativos.",
+    imagen: "/assets/barraLinda.jpeg",
+  },
+  {
+    titulo: "Espejada",
+    descripcion:
+      "Superficies reflectantes que potencian la iluminación del ambiente y generan un efecto impactante.",
+    imagen: "/assets/barraLinda.jpeg",
+  }
 ];

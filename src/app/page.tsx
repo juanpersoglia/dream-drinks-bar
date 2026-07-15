@@ -19,8 +19,8 @@ export default function Home() {
       bg-zinc-950 */}
       <Servicios />
       {/* bg-black */}
-      <NuestrasBarras />
-      {/* bg-zinc-950 */}
+      {/*<NuestrasBarras />
+       bg-zinc-950 */}
       <Testimonios />
       {/* bg-zinc-950 */}
       <Gallery />

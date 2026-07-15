@@ -3,7 +3,6 @@ import Image from "next/image";
 interface ServicioProps {
   titulo: string;
   descripcion: string;
-  caracteristicas?: string[];
   imagen: string;
   isReversed?: boolean;
 }
@@ -11,18 +10,18 @@ interface ServicioProps {
 export const ServicioCard = ({
   titulo,
   descripcion,
-  caracteristicas,
   imagen,
   isReversed = false,
 }: ServicioProps) => {
   return (
     <div
-      className={`flex flex-col ${
-        isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
-      } gap-8 lg:gap-12 items-center`}
+      className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
+        } gap-4 lg:gap-12 items-center`}
     >
+      
       {/* Imagen */}
       <div className="w-full lg:w-1/2">
+
         <div className="relative aspect-[4/3] overflow-hidden shadow-2xl">
           <Image
             src={imagen}
@@ -37,22 +36,11 @@ export const ServicioCard = ({
       </div>
 
       {/* Contenido */}
-      <div className="w-full lg:w-1/2 space-y-6">
-        <h3>
+      <div className="w-full lg:w-1/2 space-y-2">
+      <h3>
           {titulo}
         </h3>
-
         <p className=" text-gray-300 leading-relaxed">{descripcion}</p>
-
-        <ul className="space-y-3">
-          {caracteristicas?.map((caracteristica, index) => (
-            <li key={index} className="flex items-start gap-3 text-gray-300">
-
-              <div className="w-1 h-1 rounded-full bg-white mt-2 flex-shrink-0"></div>
-              <p>{caracteristica}</p>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

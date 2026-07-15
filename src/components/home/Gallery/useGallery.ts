@@ -1,67 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import type { GalleryImage } from './galleryImages';
 
-interface GalleryImage {
-  src: string;
-  alt: string;
-}
+const PAGE_SIZE = 12;
 
-interface UseGalleryProps {
-  images: GalleryImage[];
-  initialPhotosCount?: number;
-}
+export const useGallery = (images: GalleryImage[]) => {
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-export const useGallery = ({ images, initialPhotosCount = 6 }: UseGalleryProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
-  const [showMore, setShowMore] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const displayedImages = images.slice(0, visibleCount);
+  const hasMore = visibleCount < images.length;
 
-  // Detectar si estamos en desktop para habilitar el lightbox
-  useEffect(() => {
-    const checkIsDesktop = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-    
-    checkIsDesktop();
-    window.addEventListener('resize', checkIsDesktop);
-    
-    return () => window.removeEventListener('resize', checkIsDesktop);
-  }, []);
+  const loadMore = () =>
+    setVisibleCount((c) => Math.min(c + PAGE_SIZE, images.length));
 
-  // Mostrar solo las primeras fotos inicialmente
-  const displayedPhotos = showMore ? images : images.slice(0, initialPhotosCount);
-
-  const openLightbox = (index: number) => {
-    // Solo abrir lightbox en desktop
-    if (isDesktop) {
-      setPhotoIndex(index);
-      setIsOpen(true);
-    }
-  };
-
-  const closeLightbox = () => {
-    setIsOpen(false);
-  };
-
-  const toggleShowMore = () => {
-    setShowMore(!showMore);
-  };
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
 
   return {
-    // Estados
-    isOpen,
-    photoIndex,
-    showMore,
-    isDesktop,
-    displayedPhotos,
-    
-    // Funciones
+    displayedImages,
+    hasMore,
+    loadMore,
+    lightboxIndex,
     openLightbox,
     closeLightbox,
-    toggleShowMore,
-    
-    // Información útil
-    hasMorePhotos: images.length > initialPhotosCount,
-    remainingPhotosCount: images.length - initialPhotosCount,
   };
 };
