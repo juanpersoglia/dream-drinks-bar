@@ -25,7 +25,7 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="/assets/videos/0701.mp4"
+          href="/assets/videos/hero.mp4"
           as="video"
           type="video/mp4"
         />
