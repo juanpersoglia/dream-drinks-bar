@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 
 const testimonios = [
   {
@@ -64,52 +64,35 @@ const StarIcon = () => (
 export const Testimonios = () => {
   const [current, setCurrent] = useState(0);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Update active dot based on scroll position
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Array.from(el.children).indexOf(entry.target as HTMLElement);
+            if (index !== -1) setCurrent(index);
+          }
+        });
+      },
+      { root: el, threshold: 0.6 }
+    );
+    Array.from(el.children).forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
 
   const scrollTo = useCallback((index: number) => {
     const el = scrollerRef.current;
     if (!el) return;
     const card = el.children[index] as HTMLElement;
-    if (card) {
-      el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
-    }
-    setCurrent(index);
+    if (card) el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
   }, []);
 
-  const startAuto = useCallback(() => {
-    autoRef.current = setInterval(() => {
-      setCurrent((c) => {
-        const next = (c + 1) % testimonios.length;
-        const el = scrollerRef.current;
-        if (el) {
-          const card = el.children[next] as HTMLElement;
-          if (card) el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
-        }
-        return next;
-      });
-    }, 5000);
-  }, []);
-
-  const stopAuto = useCallback(() => {
-    if (autoRef.current) clearInterval(autoRef.current);
-  }, []);
-
-  useEffect(() => {
-    startAuto();
-    return stopAuto;
-  }, [startAuto, stopAuto]);
-
-  const prev = () => {
-    stopAuto();
-    scrollTo((current - 1 + testimonios.length) % testimonios.length);
-    startAuto();
-  };
-
-  const next = () => {
-    stopAuto();
-    scrollTo((current + 1) % testimonios.length);
-    startAuto();
-  };
+  const prev = () => scrollTo((current - 1 + testimonios.length) % testimonios.length);
+  const next = () => scrollTo((current + 1) % testimonios.length);
 
   return (
     <section id="testimonios" className="py-20 bg-zinc-950">
@@ -139,11 +122,7 @@ export const Testimonios = () => {
         </div>
 
         {/* Carousel */}
-        <div
-          className="relative"
-          onMouseEnter={stopAuto}
-          onMouseLeave={startAuto}
-        >
+        <div className="relative">
           {/* Prev */}
           <button
             onClick={prev}
@@ -210,7 +189,7 @@ export const Testimonios = () => {
           {testimonios.map((_, i) => (
             <button
               key={i}
-              onClick={() => { stopAuto(); scrollTo(i); startAuto(); }}
+              onClick={() => scrollTo(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === current ? "w-6 bg-yellow-400" : "w-1.5 bg-white/20"
               }`}
