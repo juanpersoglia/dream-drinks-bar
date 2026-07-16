@@ -32,7 +32,7 @@ export const Hero = () => {
           playsInline
           preload="auto"
           onCanPlay={() => setVideoReady(true)}
-          className={`absolute inset-0 w-full h-full object-cover scale-110 transition-opacity duration-[1000ms] ease-in ${
+          className={`absolute inset-0 w-full h-full object-cover scale-110 transition-opacity duration-[500ms] ease-in ${
             videoReady ? "opacity-100" : "opacity-0"
           }`}
         >
