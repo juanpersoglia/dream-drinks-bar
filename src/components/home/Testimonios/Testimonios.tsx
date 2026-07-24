@@ -95,7 +95,7 @@ export const Testimonios = () => {
   const next = () => scrollTo((current + 1) % testimonios.length);
 
   return (
-    <section id="testimonios" className="py-20 bg-zinc-950">
+    <section id="testimonios" className="py-20 bg-zinc-900">
       <style>{`
         .testimonios-scroll { scrollbar-width: none; -ms-overflow-style: none; }
         .testimonios-scroll::-webkit-scrollbar { display: none; }
@@ -109,7 +109,7 @@ export const Testimonios = () => {
         .marquee-track:hover { animation-play-state: paused; }
       `}</style>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
 
         {/* Header */}
         <div className="text-center mb-14">

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { GalleryImage } from './galleryImages';
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 6;
 
 export const useGallery = (images: GalleryImage[]) => {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);

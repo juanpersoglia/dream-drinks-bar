@@ -1,17 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export const Hero = () => {
   const [videoReady, setVideoReady] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Prevent browser from restoring previous scroll position
   useEffect(() => {
     window.history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
   }, []);
+
+  const toggleAudio = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audioPlaying) {
+      audio.pause();
+      setAudioPlaying(false);
+    } else {
+      audio.play().catch(() => {});
+      setAudioPlaying(true);
+    }
+  };
 
   const whatsappNumber = "+5493794347949";
   const whatsappMessage =
@@ -22,6 +36,9 @@ export const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center bg-black">
+
+      {/* Ambient audio — place stay-inside.mp3 in /public/assets/audio/ */}
+      <audio ref={audioRef} src="/assets/audio/stay-inside.mp3" loop preload="none" />
 
       {/* Video — starts invisible, fades in when ready. Scale hides watermark. */}
       <div className="absolute inset-0 overflow-hidden">
@@ -40,6 +57,32 @@ export const Hero = () => {
         </video>
         <div className="absolute inset-0 bg-black/55" />
       </div>
+
+      {/* Music toggle — bottom left */}
+      <button
+        onClick={toggleAudio}
+        className="absolute bottom-8 left-6 z-20 flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors duration-300 text-xs group"
+        aria-label={audioPlaying ? "Silenciar música" : "Reproducir música"}
+      >
+        {audioPlaying ? (
+          <>
+            <span className="flex items-end gap-px h-4">
+              <span className="w-0.5 bg-current rounded-full animate-[bounce_0.7s_ease-in-out_infinite] h-2" />
+              <span className="w-0.5 bg-current rounded-full animate-[bounce_0.7s_ease-in-out_0.15s_infinite] h-4" />
+              <span className="w-0.5 bg-current rounded-full animate-[bounce_0.7s_ease-in-out_0.3s_infinite] h-1.5" />
+              <span className="w-0.5 bg-current rounded-full animate-[bounce_0.7s_ease-in-out_0.05s_infinite] h-3" />
+            </span>
+            <span>Stay Inside — Sandy Rivera</span>
+          </>
+        ) : (
+          <>
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.064A4 4 0 108 17V8.82l8-1.6V13.064A4 4 0 1020 15V3h-2z" />
+            </svg>
+            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">Stay Inside — Sandy Rivera</span>
+          </>
+        )}
+      </button>
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center text-center">

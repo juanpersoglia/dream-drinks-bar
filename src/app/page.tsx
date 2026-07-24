@@ -10,24 +10,14 @@ import { Anexo } from "@/components/home/Anexo";
 export default function Home() {
   return (
     <main className="text-white font-montserrat">
-      {/* bg-black */}
+      {/* Hero — full width, no margin */}
       <Hero />
-      {/* bg-zinc-950 */}
+
       <QuienesSomos />
-      {/* bg-black */}
-       {/*<Metodo />
-      bg-zinc-950 */}
       <Servicios />
-      {/* bg-black */}
-      {/*<NuestrasBarras />
-       bg-zinc-950 */}
       <Testimonios />
-      {/* bg-zinc-950 */}
       <Gallery />
-      
-      {/* bg-black */}
       <Contacto />
-      {/* bg-black with border-t */}
       <Anexo />
     </main>
   );

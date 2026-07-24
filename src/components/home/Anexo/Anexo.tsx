@@ -26,7 +26,7 @@ const serviciosAnexo = [
 export const Anexo = () => {
   return (
     <section id="otros-servicios" className="py-16 bg-black border-t border-white/5">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 md:px-6">
         <div className="text-center mb-10">
           <p className="text-gray-600 text-xs uppercase tracking-widest mb-2">Otros servicios</p>
           <h2 className="text-gray-400 text-lg font-semibold">Más allá de la barra</h2>

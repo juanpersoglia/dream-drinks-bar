@@ -1,52 +1,176 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { barrasData } from './barrasData';
+import { useState, useRef, useCallback, useEffect } from "react";
+import Image from "next/image";
+import { serviciosData } from "../Servicios/serviciosData";
 
 export const NuestrasBarras = () => {
+  const [current, setCurrent] = useState(0);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Sync dots with manual scroll / touch swipe
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Array.from(el.children).indexOf(entry.target as HTMLElement);
+            if (idx !== -1) setCurrent(idx);
+          }
+        });
+      },
+      { root: el, threshold: 0.6 }
+    );
+    Array.from(el.children).forEach((slide) => observer.observe(slide));
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = useCallback((index: number) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const slide = el.children[index] as HTMLElement;
+    if (slide) el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+  }, []);
+
+  const startAuto = useCallback(() => {
+    autoRef.current = setInterval(() => {
+      setCurrent((c) => {
+        const next = (c + 1) % serviciosData.length;
+        const el = scrollerRef.current;
+        if (el) {
+          const slide = el.children[next] as HTMLElement;
+          if (slide) el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+        }
+        return next;
+      });
+    }, 4000);
+  }, []);
+
+  const stopAuto = useCallback(() => {
+    if (autoRef.current) clearInterval(autoRef.current);
+  }, []);
+
+  useEffect(() => {
+    startAuto();
+    return stopAuto;
+  }, [startAuto, stopAuto]);
+
+  const prev = () => {
+    stopAuto();
+    scrollTo((current - 1 + serviciosData.length) % serviciosData.length);
+    startAuto();
+  };
+
+  const next = () => {
+    stopAuto();
+    scrollTo((current + 1) % serviciosData.length);
+    startAuto();
+  };
+
   return (
-    <section id="nuestras-barras" className="py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="mb-4">Barras que definen la experiencia</h2>
+    <section id="nuestras-barras" className="py-20 px-2 md:px-4 bg-zinc-900">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h2 className="mb-4">Nuestras Barras</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Cada barra es una pieza pensada para acompañar el espacio, ordenar el servicio y potenciar la experiencia del invitado, manteniendo siempre la estética y la presencia Dream Drinks.
+            Cada barra es una pieza pensada para acompañar el espacio, ordenar el
+            servicio y potenciar la experiencia del invitado.
           </p>
         </div>
 
-        {/* Featured bar */}
-        <div className="relative aspect-[16/7] overflow-hidden rounded-xl mb-6 shadow-2xl">
-          <Image
-            src={barrasData[0].imagen}
-            alt={barrasData[0].titulo}
-            fill
-            className="object-cover hover:scale-105 transition-transform duration-700"
-            sizes="100vw"
-            quality={80}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6">
-            <span className="text-yellow-400 font-bold text-sm uppercase tracking-widest">{barrasData[0].titulo}</span>
+        {/* Carousel */}
+        <div
+          className="relative"
+          onMouseEnter={stopAuto}
+          onMouseLeave={startAuto}
+        >
+          {/* Slides track */}
+          <div
+            ref={scrollerRef}
+            className="flex overflow-x-auto"
+            style={{
+              scrollSnapType: "x mandatory",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
+            {serviciosData.map((barra, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 w-full"
+                style={{ scrollSnapAlign: "start" }}
+              >
+                <div className="relative aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden">
+                  <Image
+                    src={barra.imagen}
+                    alt={barra.titulo}
+                    fill
+                    className="object-cover"
+                    sizes="100vw"
+                    quality={85}
+                    priority={i === 0}
+                  />
+                  {/* Dark gradient bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+
+                  {/* Slide counter */}
+                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white/80 text-xs font-medium px-3 py-1 rounded-full">
+                    {i + 1} / {serviciosData.length}
+                  </div>
+
+                  {/* Text overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                    <h3 className="text-white text-2xl md:text-3xl font-bold mb-2">
+                      {barra.titulo}
+                    </h3>
+                    <p className="text-gray-300 text-sm md:text-base max-w-xl leading-relaxed">
+                      {barra.descripcion}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+
+          {/* Prev arrow */}
+          <button
+            onClick={prev}
+            aria-label="Anterior"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 border border-white/20 hover:bg-black/80 flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+          >
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Next arrow */}
+          <button
+            onClick={next}
+            aria-label="Siguiente"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 border border-white/20 hover:bg-black/80 flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+          >
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
 
-        {/* Grid of remaining bars */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {barrasData.slice(1).map((barra, i) => (
-            <div key={i} className="relative aspect-square overflow-hidden rounded-lg group">
-              <Image
-                src={barra.imagen}
-                alt={barra.titulo}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                quality={90}
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
-                <p className="text-white text-xs font-semibold truncate">{barra.titulo}</p>
-              </div>
-            </div>
+        {/* Dots */}
+        <div className="flex justify-center gap-2 mt-5">
+          {serviciosData.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { stopAuto(); scrollTo(i); startAuto(); }}
+              aria-label={`Ir a barra ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === current ? "w-6 bg-yellow-400" : "w-1.5 bg-white/25"
+              }`}
+            />
           ))}
         </div>
 

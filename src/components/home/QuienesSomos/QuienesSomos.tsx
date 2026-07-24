@@ -13,8 +13,8 @@ const paragraphs = [
 
 export const QuienesSomos = () => {
   return (
-    <section id="quienes-somos" className="py-20 bg-black">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="quienes-somos" className="py-20 bg-zinc-900">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
           {/* Image */}
           <div className="w-full md:w-1/2 flex-shrink-0">
@@ -50,11 +50,11 @@ export const QuienesSomos = () => {
             {[
               { value: "+12", label: "Años creando experiencias" },
               { value: "+45", label: "Localidades recorridas" },
-              { value: "+400.000", label: "Cócteles preparados" },
+              { value: "+90mil", label: "Cócteles preparados" },
               { value: "98%", label: "De clientes que vuelven" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-2 text-center">
-                <span className="text-4xl md:text-5xl font-bold text-yellow-400">
+                <span className="text-4xl md:text-5xl font-bold text-white">
                   {stat.value}
                 </span>
                 <span className="text-gray-400 text-sm leading-snug">{stat.label}</span>
