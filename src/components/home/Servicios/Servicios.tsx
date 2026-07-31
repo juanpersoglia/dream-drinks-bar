@@ -140,14 +140,12 @@ export const Servicios = () => {
                     </div>
 
                     <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6 md:p-10">
-                      <div className="rounded-lg bg-black/50 backdrop-blur-md p-3 sm:p-4 md:rounded-none md:bg-transparent md:backdrop-blur-none md:p-0">
-                        <h3 className="text-white text-sm sm:text-base md:text-[2.4em] font-semibold md:font-bold mb-1 md:mb-2 normal-case tracking-normal leading-snug md:leading-tight">
-                          {barra.titulo}
-                        </h3>
-                        <p className="text-white/70 md:text-gray-300 text-[10px] sm:text-xs md:text-base leading-relaxed line-clamp-2 md:line-clamp-none max-w-xl">
-                          {barra.descripcion}
-                        </p>
-                      </div>
+                      <h3 className="text-white text-sm sm:text-base md:text-[2.4em] font-semibold md:font-bold mb-1 md:mb-2 normal-case tracking-normal leading-snug md:leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.95),0_2px_12px_rgba(0,0,0,0.75)] md:[text-shadow:none]">
+                        {barra.titulo}
+                      </h3>
+                      <p className="text-white/85 md:text-gray-300 text-[10px] sm:text-xs md:text-base leading-relaxed line-clamp-2 md:line-clamp-none max-w-xl [text-shadow:0_1px_3px_rgba(0,0,0,0.95),0_2px_10px_rgba(0,0,0,0.7)] md:[text-shadow:none]">
+                        {barra.descripcion}
+                      </p>
                     </div>
                   </div>
                 </div>
