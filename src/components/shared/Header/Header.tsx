@@ -28,7 +28,7 @@ export const Header = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-white hover:text-gold-400 font-montserrat font-semibold transition-colors duration-200"
+                className="text-white hover:text-gold-400 font-montserrat font-semibold text-[11px] tracking-[1px] uppercase transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -71,7 +71,7 @@ export const Header = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-white hover:text-gold-400 font-montserrat font-semibold transition-colors duration-200"
+                className="text-white hover:text-gold-400 font-montserrat font-semibold text-[11px] tracking-[1px] uppercase transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -112,7 +112,7 @@ export const Header = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 rounded-md text-base font-montserrat font-semibold text-white hover:text-gold-400 hover:bg-white/10 transition-colors duration-200"
+                  className="block px-3 py-2 rounded-md text-[11px] tracking-[1px] uppercase font-montserrat font-semibold text-white hover:text-gold-400 hover:bg-white/10 transition-colors duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

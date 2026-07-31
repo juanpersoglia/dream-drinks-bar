@@ -40,7 +40,7 @@ export const ServicioCard = ({
       <h3>
           {titulo}
         </h3>
-        <p className=" text-gray-300 leading-relaxed">{descripcion}</p>
+        <p className="text-gray-300">{descripcion}</p>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState, useCallback, useEffect } from "react";
 
 const testimonios = [
@@ -48,11 +49,14 @@ const testimonios = [
 ];
 
 const empresas = [
-  "Corrientes Tennis Club",
-  "Torre Rivera",
-  "Grupo Meucci · Royal Enfield",
-  "Consejo de Ciencias Económicas de Corrientes",
-  "Colegio de Bioquímicos",
+  { nombre: "Big Jim", src: "/assets/logoEmpresas/BIG JIM.png" },
+  { nombre: "CPCE Corrientes", src: "/assets/logoEmpresas/CCCE.png" },
+  { nombre: "Corrientes Tennis Club", src: "/assets/logoEmpresas/CTC.png" },
+  { nombre: "Grupo Meucci", src: "/assets/logoEmpresas/GRUPO MEUCCI.png" },
+  { nombre: "Monks", src: "/assets/logoEmpresas/MONKS.png" },
+  { nombre: "Óga Pizzeria", src: "/assets/logoEmpresas/OGA.png" },
+  { nombre: "Pepe", src: "/assets/logoEmpresas/PEPE.png" },
+  { nombre: "Torre Rivera", src: "/assets/logoEmpresas/TORRE RIVERA.png" },
 ];
 
 const StarIcon = () => (
@@ -104,9 +108,15 @@ export const Testimonios = () => {
           100% { transform: translateX(-50%); }
         }
         .marquee-track {
-          animation: marquee-slide 28s linear infinite;
+          animation: marquee-slide 40s linear infinite;
         }
         .marquee-track:hover { animation-play-state: paused; }
+        .empresa-logo {
+          filter: brightness(0) invert(1);
+          opacity: 0.35;
+          transition: opacity 0.3s ease;
+        }
+        .empresa-logo:hover { opacity: 0.7; }
       `}</style>
 
       <div className="max-w-6xl mx-auto px-4 md:px-6">
@@ -154,18 +164,18 @@ export const Testimonios = () => {
                 </div>
 
                 {/* Quote */}
-                <p className="text-gray-300 text-sm leading-relaxed flex-1">
+                <p className="text-gray-300 flex-1">
                   &ldquo;{t.texto}&rdquo;
                 </p>
 
                 {/* Client */}
                 <div className="flex items-center gap-3 pt-2 border-t border-white/5">
                   <div className="w-9 h-9 rounded-full bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
-                    <span className="text-yellow-400 font-bold text-sm">{t.nombre[0]}</span>
+                    <span className="text-yellow-400 font-bold">{t.nombre[0]}</span>
                   </div>
                   <div>
-                    <p className="text-white text-sm font-semibold leading-tight">{t.nombre}</p>
-                    <p className="text-yellow-400/60 text-xs mt-0.5">{t.evento}</p>
+                    <p className="text-white font-semibold leading-tight">{t.nombre}</p>
+                    <p className="text-yellow-400/60 text-[10px] mt-0.5">{t.evento}</p>
                   </div>
                 </div>
               </div>
@@ -199,25 +209,32 @@ export const Testimonios = () => {
         </div>
 
         {/* Footer text */}
-        <p className="text-center text-gray-500 text-sm mt-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-center text-gray-500 mt-12 max-w-2xl mx-auto">
           * Más de 850 eventos realizados y cientos de clientes que confiaron en nosotros para
           acompañar algunos de los momentos más importantes de sus vidas.
         </p>
 
         {/* Empresas que confiaron */}
         <div className="border-t border-white/8 pt-14 mt-14 overflow-hidden">
-          <p className="text-center text-gray-500 text-xs uppercase tracking-widest mb-10">
+          <p className="text-center text-gray-500 text-[10px] uppercase tracking-[2px] mb-10">
             Empresas que confiaron en nosotros
           </p>
           <div className="overflow-hidden">
-            <div className="marquee-track flex gap-16 w-max">
+            <div className="marquee-track flex items-center gap-24 md:gap-36 w-max">
               {[...empresas, ...empresas].map((empresa, i) => (
-                <span
-                  key={i}
-                  className="text-white/40 hover:text-white/80 text-sm font-semibold tracking-wide uppercase whitespace-nowrap transition-colors duration-300 cursor-default"
+                <div
+                  key={`${empresa.nombre}-${i}`}
+                  className="flex-shrink-0 flex items-center justify-center h-12 md:h-14"
+                  title={empresa.nombre}
                 >
-                  {empresa}
-                </span>
+                  <Image
+                    src={empresa.src}
+                    alt={empresa.nombre}
+                    width={160}
+                    height={56}
+                    className="empresa-logo h-10 md:h-12 w-auto max-w-[140px] md:max-w-[160px] object-contain"
+                  />
+                </div>
               ))}
             </div>
           </div>

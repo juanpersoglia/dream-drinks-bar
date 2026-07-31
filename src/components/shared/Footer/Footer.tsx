@@ -20,7 +20,7 @@ export const Footer = () => {
             </div>
             
             <div className="text-center md:text-right">
-              <p className="text-gray-400 font-montserrat text-sm">
+              <p className="text-gray-400">
                 Desarrollado por{' '}
                 <Link 
                   href="https://github.com/juanpersoglia" 

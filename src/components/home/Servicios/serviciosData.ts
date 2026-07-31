@@ -3,14 +3,12 @@ export const serviciosData = [
     titulo: "Octogonal (Isla)",
     descripcion:
       "Diseño de atención 360°, ideal para convertirse en el centro del evento y atender grandes cantidades de invitados.",
-
     imagen: "/assets/barras/OCTOGONAL.jpeg",
   },
   {
     titulo: "New York (Isla)",
     descripcion:
       "Inspirada en el estilo industrial neoyorquino, combina carácter, diseño y funcionalidad en una configuración central.",
-
     imagen: "/assets/barras/NEW YORK.png",
   },
   {
@@ -40,7 +38,9 @@ export const serviciosData = [
   {
     titulo: "Carrito Gintonero",
     descripcion:
-      "Ideal para recepcion de invitados con la mejor selección de gines.",
-    imagen: "/assets/barras/CARRITO GINTONERO.jpg",
-  }
+      "Ideal para recepción de invitados con la mejor selección de gines.",
+    imagen: "/assets/barras/CARRITO GINTONERO 2.jpg",
+    // Imagen vertical: en desktop el slide es muy ancho; contain evita el zoom excesivo
+    objectFit: "contain" as const,
+  },
 ];

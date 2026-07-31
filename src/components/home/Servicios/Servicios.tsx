@@ -4,62 +4,83 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { serviciosData } from "./serviciosData";
 
+const TOTAL = serviciosData.length;
+const AUTO_MS = 5000;
+const TRANSITION_MS = 700;
+
 export const Servicios = () => {
   const [current, setCurrent] = useState(0);
-  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [animate, setAnimate] = useState(true);
   const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const prevIndex = useRef(0);
 
-  // Sync dots when user swipes / scrolls manually
-  useEffect(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = Array.from(el.children).indexOf(entry.target as HTMLElement);
-            if (idx !== -1) setCurrent(idx);
-          }
-        });
-      },
-      { root: el, threshold: 0.6 }
-    );
-    Array.from(el.children).forEach((slide) => observer.observe(slide));
-    return () => observer.disconnect();
+  const stopAuto = useCallback(() => {
+    if (autoRef.current) {
+      clearInterval(autoRef.current);
+      autoRef.current = null;
+    }
   }, []);
 
-  const scrollTo = useCallback((index: number) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const slide = el.children[index] as HTMLElement;
-    if (slide) el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+  const goTo = useCallback((index: number) => {
+    const next = ((index % TOTAL) + TOTAL) % TOTAL;
+    const from = prevIndex.current;
+    const wrapping =
+      (from === TOTAL - 1 && next === 0) || (from === 0 && next === TOTAL - 1);
+
+    if (wrapping) {
+      setAnimate(false);
+      prevIndex.current = next;
+      setCurrent(next);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setAnimate(true));
+      });
+      return;
+    }
+
+    setAnimate(true);
+    prevIndex.current = next;
+    setCurrent(next);
   }, []);
 
   const startAuto = useCallback(() => {
+    stopAuto();
     autoRef.current = setInterval(() => {
-      setCurrent((c) => {
-        const next = (c + 1) % serviciosData.length;
-        const el = scrollerRef.current;
-        if (el) {
-          const slide = el.children[next] as HTMLElement;
-          if (slide) el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
-        }
-        return next;
-      });
-    }, 4000);
-  }, []);
-
-  const stopAuto = useCallback(() => {
-    if (autoRef.current) clearInterval(autoRef.current);
-  }, []);
+      goTo(prevIndex.current + 1);
+    }, AUTO_MS);
+  }, [goTo, stopAuto]);
 
   useEffect(() => {
     startAuto();
     return stopAuto;
   }, [startAuto, stopAuto]);
 
-  const prev = () => { stopAuto(); scrollTo((current - 1 + serviciosData.length) % serviciosData.length); startAuto(); };
-  const next = () => { stopAuto(); scrollTo((current + 1) % serviciosData.length); startAuto(); };
+  const prev = () => {
+    stopAuto();
+    goTo(current - 1);
+    startAuto();
+  };
+
+  const next = () => {
+    stopAuto();
+    goTo(current + 1);
+    startAuto();
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    stopAuto();
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(delta) > 40) {
+      goTo(delta < 0 ? current + 1 : current - 1);
+    }
+    startAuto();
+  };
 
   return (
     <section id="servicios" className="py-20 bg-black">
@@ -80,57 +101,75 @@ export const Servicios = () => {
           className="relative"
           onMouseEnter={stopAuto}
           onMouseLeave={startAuto}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
-          {/* Slides */}
-          <div
-            ref={scrollerRef}
-            className="flex overflow-x-auto"
-            style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {serviciosData.map((barra, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 w-full"
-                style={{ scrollSnapAlign: "start" }}
-              >
-                <div className="relative aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden">
-                  <Image
-                    src={barra.imagen}
-                    alt={barra.titulo}
-                    fill
-                    className="object-cover"
-                    sizes="100vw"
-                    quality={85}
-                    priority={i === 0}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+          <div className="overflow-hidden rounded-2xl">
+            <div
+              className="flex will-change-transform"
+              style={{
+                transform: `translate3d(-${current * 100}%, 0, 0)`,
+                transition: animate
+                  ? `transform ${TRANSITION_MS}ms cubic-bezier(0.45, 0, 0.55, 1)`
+                  : "none",
+              }}
+            >
+              {serviciosData.map((barra, i) => {
+                const fitContain = "objectFit" in barra && barra.objectFit === "contain";
+                return (
+                <div key={i} className="w-full flex-shrink-0">
+                  <div
+                    className={`relative aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] overflow-hidden ${
+                      fitContain ? "bg-black" : ""
+                    }`}
+                  >
+                    <Image
+                      src={barra.imagen}
+                      alt={barra.titulo}
+                      fill
+                      className={
+                        fitContain
+                          ? "object-cover object-top md:object-contain md:object-top md:scale-[1.45] md:origin-top"
+                          : "object-cover object-center"
+                      }
+                      sizes="100vw"
+                      quality={85}
+                      priority={i === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
-                  {/* Counter */}
-                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white/80 text-xs font-medium px-3 py-1 rounded-full">
-                    {i + 1} / {serviciosData.length}
-                  </div>
+                    <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white/80 text-xs font-medium px-3 py-1 rounded-full">
+                      {i + 1} / {TOTAL}
+                    </div>
 
-                  {/* Text */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                    <h3 className="text-white text-2xl md:text-3xl font-bold mb-2">{barra.titulo}</h3>
-                    <p className="text-gray-300 text-sm md:text-base max-w-xl leading-relaxed">{barra.descripcion}</p>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                      <h3 className="text-white text-[1.8em] md:text-[2.4em] font-bold mb-2 normal-case tracking-normal leading-tight">
+                        {barra.titulo}
+                      </h3>
+                      <p className="text-gray-300 max-w-xl">{barra.descripcion}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
 
-          {/* Prev */}
-          <button onClick={prev} aria-label="Anterior"
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 border border-white/20 hover:bg-black/80 flex items-center justify-center transition-all duration-200 backdrop-blur-sm">
+          <button
+            onClick={prev}
+            aria-label="Anterior"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 border border-white/20 hover:bg-black/80 flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+          >
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
-          {/* Next */}
-          <button onClick={next} aria-label="Siguiente"
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 border border-white/20 hover:bg-black/80 flex items-center justify-center transition-all duration-200 backdrop-blur-sm">
+          <button
+            onClick={next}
+            aria-label="Siguiente"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 border border-white/20 hover:bg-black/80 flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+          >
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
@@ -140,16 +179,24 @@ export const Servicios = () => {
         {/* Dots */}
         <div className="flex justify-center gap-2 mt-5">
           {serviciosData.map((_, i) => (
-            <button key={i} onClick={() => { stopAuto(); scrollTo(i); startAuto(); }}
+            <button
+              key={i}
+              onClick={() => {
+                stopAuto();
+                goTo(i);
+                startAuto();
+              }}
               aria-label={`Barra ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-white" : "w-1.5 bg-white/30"}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === current ? "w-6 bg-white" : "w-1.5 bg-white/30"
+              }`}
             />
           ))}
         </div>
 
         {/* Footer image */}
         <div className="mt-16 border-t border-white/10 pt-14">
-          <h3 className="text-center text-white text-xl font-semibold tracking-wide uppercase mb-4">
+          <h3 className="text-center text-white tracking-wide mb-4">
             Adaptamos la barra a tu evento.
           </h3>
           <p className="text-gray-400 max-w-3xl mx-auto text-center mb-10">

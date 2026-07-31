@@ -42,12 +42,12 @@ export const CartaCard = ({
           {titulo}
         </h2>
 
-        <p className="text-gray-300 leading-relaxed">
+        <p className="text-gray-300">
           {descripcion}
         </p>
 
         <div className="space-y-4">
-          <h4 className="text-xl font-montserrat font-bold text-yellow-400">
+          <h4 className="font-montserrat font-bold text-yellow-400">
             Incluye:
           </h4>
           <ul className="space-y-3">

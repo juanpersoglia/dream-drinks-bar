@@ -125,10 +125,10 @@ export const NuestrasBarras = () => {
 
                   {/* Text overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                    <h3 className="text-white text-2xl md:text-3xl font-bold mb-2">
+                    <h3 className="text-white text-[1.8em] md:text-[2.4em] font-bold mb-2 normal-case tracking-normal leading-tight">
                       {barra.titulo}
                     </h3>
-                    <p className="text-gray-300 text-sm md:text-base max-w-xl leading-relaxed">
+                    <p className="text-gray-300 max-w-xl">
                       {barra.descripcion}
                     </p>
                   </div>
@@ -174,7 +174,7 @@ export const NuestrasBarras = () => {
           ))}
         </div>
 
-        <p className="text-center text-gray-600 text-xs mt-6">
+        <p className="text-center text-gray-600 text-[10px] mt-6">
           La disponibilidad de cada modelo se confirma al momento de la reserva.
         </p>
       </div>

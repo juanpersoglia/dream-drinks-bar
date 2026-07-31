@@ -52,12 +52,12 @@ export const Metodo = () => {
                 <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] right-[-calc(50%-2rem)] h-px bg-gradient-to-r from-yellow-400/40 to-transparent w-full" />
               )}
               <div className="w-16 h-16 rounded-full border-2 border-yellow-400/50 flex items-center justify-center mb-4 group-hover:border-yellow-400 transition-colors duration-300 bg-yellow-400/5">
-                <span className="text-yellow-400 font-bold text-sm">{step.number}</span>
+                <span className="text-yellow-400 font-bold text-[1.1em]">{step.number}</span>
               </div>
-              <h3 className="text-white text-xs font-bold uppercase tracking-wide mb-2 leading-tight">
+              <h3 className="text-white text-[11px] font-bold tracking-[1px] mb-2 leading-tight">
                 {step.title}
               </h3>
-              <p className="text-gray-500 text-xs leading-relaxed">{step.description}</p>
+              <p className="text-gray-500">{step.description}</p>
             </div>
           ))}
         </div>
