@@ -47,13 +47,13 @@ export const CartaCard = ({
         </p>
 
         <div className="space-y-4">
-          <h4 className="font-montserrat font-bold text-yellow-400">
+          <h4 className="font-montserrat font-bold text-gold-400">
             Incluye:
           </h4>
           <ul className="space-y-3">
             {cocteles.map((coctel, index) => (
               <li key={index} className="flex items-start gap-3 text-gray-300">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-2 flex-shrink-0"></div>
+                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 mt-2 flex-shrink-0"></div>
                 <p>{coctel}</p>
               </li>
             ))}

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { SectionHeader, sectionDescClass } from "@/components/shared/SectionHeader";
 
 const paragraphs = [
   "Hace más de 12 años entendimos que un servicio de coctelería no consiste únicamente en preparar excelentes tragos.",
@@ -94,7 +95,7 @@ export const QuienesSomos = () => {
   }, []);
 
   return (
-    <section id="quienes-somos" className="py-20 bg-zinc-900">
+    <section id="quienes-somos" className="py-20 bg-surface">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
           {/* Image */}
@@ -112,10 +113,14 @@ export const QuienesSomos = () => {
           </div>
 
           {/* Text */}
-          <div className="w-full md:w-1/2 flex flex-col gap-4">
-            <h2 className="text-white mb-2">¿Quiénes somos?</h2>
+          <div className="w-full md:w-1/2 flex flex-col gap-3">
+            <SectionHeader
+              align="left"
+              className="mb-1"
+              title="¿Quiénes somos?"
+            />
             {paragraphs.map((text, i) => (
-              <p key={i} className="text-gray-300">
+              <p key={i} className={sectionDescClass}>
                 {text}
               </p>
             ))}
@@ -124,7 +129,7 @@ export const QuienesSomos = () => {
 
         {/* Stats */}
         <div ref={statsRef} className="mt-20 border-t border-white/10 pt-16">
-          <h3 className="text-center text-white tracking-wide mb-12">
+          <h3 className="text-center text-white tracking-wide mb-12 uppercase">
             Dream Drinks en números
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
@@ -139,7 +144,9 @@ export const QuienesSomos = () => {
                   suffix={stat.suffix}
                   active={started}
                 />
-                <span className="text-gray-400 leading-snug">{stat.label}</span>
+                <span className="text-gray-400 uppercase text-[10px] tracking-[0.08em] font-medium leading-snug">
+                  {stat.label}
+                </span>
               </div>
             ))}
           </div>

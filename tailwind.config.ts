@@ -22,16 +22,16 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         gold: {
-          50: '#fefce8',   // Muy claro
-          100: '#fef3c7',  // Claro
-          200: '#fde68a',  // Claro medio
-          300: '#fcd34d',  // Medio
-          400: '#f59e0b',  // Medio oscuro - principal
-          500: '#d97706',  // Oscuro
-          600: '#b45309',  // Muy oscuro
-          700: '#92400e',  // Extra oscuro
-          800: '#78350f',  // Ultra oscuro
-          900: '#451a03',  // Negro dorado
+          50: '#faf6eb',
+          100: '#f5ecd3',
+          200: '#efd9a0',
+          300: '#e3be6a', // bright — modalidades
+          400: '#c8a353', // principal — modalidades.png
+          500: '#a87820', // deep — modalidades
+          600: '#8a6418',
+          700: '#6b4d12',
+          800: '#4d370d',
+          900: '#2e2108',
         },
         'black-primary': '#121212', // Fondo principal
         'black-section': '#2A2626', // Fondo de secciones internas

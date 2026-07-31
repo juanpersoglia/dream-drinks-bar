@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
+import { SectionHeader, sectionDescClass } from "@/components/shared/SectionHeader";
 import { serviciosData } from "./serviciosData";
 
 const TOTAL = serviciosData.length;
@@ -83,18 +84,14 @@ export const Servicios = () => {
   };
 
   return (
-    <section id="servicios" className="py-20 bg-black">
+    <section id="servicios" className="pt-20 pb-0 bg-surface-soft">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
-        {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="mb-3">Nuestras Barras</h2>
-          <h3 className="mb-4 text-gray-300">Elegí el diseño que mejor represente tu evento.</h3>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Cada celebración es diferente. Por eso desarrollamos una línea de barras modulares
-            que combinan diseño, funcionalidad y versatilidad.
-          </p>
-        </div>
+        <SectionHeader
+          title="Nuestras Barras"
+          subtitle="Elegí el diseño que mejor represente tu evento."
+          description="Cada celebración es diferente. Por eso desarrollamos una línea de barras modulares que combinan diseño, funcionalidad y versatilidad."
+        />
 
         {/* Carousel */}
         <div
@@ -142,11 +139,15 @@ export const Servicios = () => {
                       {i + 1} / {TOTAL}
                     </div>
 
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                      <h3 className="text-white text-[1.8em] md:text-[2.4em] font-bold mb-2 normal-case tracking-normal leading-tight">
-                        {barra.titulo}
-                      </h3>
-                      <p className="text-gray-300 max-w-xl">{barra.descripcion}</p>
+                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6 md:p-10">
+                      <div className="rounded-lg bg-black/50 backdrop-blur-md p-3 sm:p-4 md:rounded-none md:bg-transparent md:backdrop-blur-none md:p-0">
+                        <h3 className="text-white text-sm sm:text-base md:text-[2.4em] font-semibold md:font-bold mb-1 md:mb-2 normal-case tracking-normal leading-snug md:leading-tight">
+                          {barra.titulo}
+                        </h3>
+                        <p className="text-white/70 md:text-gray-300 text-[10px] sm:text-xs md:text-base leading-relaxed line-clamp-2 md:line-clamp-none max-w-xl">
+                          {barra.descripcion}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -193,26 +194,39 @@ export const Servicios = () => {
             />
           ))}
         </div>
+      </div>
 
-        {/* Footer image */}
-        <div className="mt-16 border-t border-white/10 pt-14">
-          <h3 className="text-center text-white tracking-wide mb-4">
+      {/* Modalidades — fondo negro a full bleed */}
+      <div className="mt-16 bg-surface border-t border-white/10 pt-14 pb-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <h3 className="text-center text-white tracking-wide mb-4 uppercase">
             Adaptamos la barra a tu evento.
           </h3>
-          <p className="text-gray-400 max-w-3xl mx-auto text-center mb-10">
+          <p className={`${sectionDescClass} max-w-3xl mx-auto text-center mb-10`}>
             Independientemente de la estética que elijas, nuestras barras pueden configurarse de
             distintas maneras para adaptarse a la cantidad de invitados, la circulación y las
             características del lugar del evento.
           </p>
           <div className="flex justify-center">
-            <div className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden">
+            <div className="relative w-full max-w-4xl aspect-video overflow-hidden">
               <Image
-                src="/assets/barritas.jpeg"
+                src="/assets/modalidades.png"
                 alt="Configuraciones de barras Dream Drinks"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 896px"
                 quality={90}
+              />
+              {/* Degradado en los bordes hacia negro */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background: `
+                    linear-gradient(to right, #000 0%, transparent 18%, transparent 82%, #000 100%),
+                    linear-gradient(to bottom, #000 0%, transparent 20%, transparent 80%, #000 100%)
+                  `,
+                }}
               />
             </div>
           </div>

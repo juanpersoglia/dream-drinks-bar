@@ -1,5 +1,7 @@
 "use client";
 
+import { SectionHeader, sectionDescClass } from "@/components/shared/SectionHeader";
+
 const steps = [
   {
     number: "01",
@@ -35,29 +37,28 @@ const steps = [
 
 export const Metodo = () => {
   return (
-    <section id="metodo" className="py-20 bg-black">
+    <section id="metodo" className="py-20 bg-surface">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="mb-4">Cómo trabajamos</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Cada evento se aborda de manera personalizada. Un método claro que nos permite brindar un servicio profesional, ordenado y sin imprevistos.
-          </p>
-        </div>
+        <SectionHeader
+          className="mb-14"
+          title="Cómo trabajamos"
+          description="Cada evento se aborda de manera personalizada. Un método claro que nos permite brindar un servicio profesional, ordenado y sin imprevistos."
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {steps.map((step, i) => (
             <div key={i} className="relative flex flex-col items-center text-center group">
               {/* Connector line */}
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] right-[-calc(50%-2rem)] h-px bg-gradient-to-r from-yellow-400/40 to-transparent w-full" />
+                <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] right-[-calc(50%-2rem)] h-px bg-gradient-to-r from-gold-400/40 to-transparent w-full" />
               )}
-              <div className="w-16 h-16 rounded-full border-2 border-yellow-400/50 flex items-center justify-center mb-4 group-hover:border-yellow-400 transition-colors duration-300 bg-yellow-400/5">
-                <span className="text-yellow-400 font-bold text-[1.1em]">{step.number}</span>
+              <div className="w-16 h-16 rounded-full border-2 border-gold-400/50 flex items-center justify-center mb-4 group-hover:border-gold-400 transition-colors duration-300 bg-gold-400/5">
+                <span className="text-gold-400 font-bold text-[1.1em]">{step.number}</span>
               </div>
-              <h3 className="text-white text-[11px] font-bold tracking-[1px] mb-2 leading-tight">
+              <h3 className="text-white text-[11px] font-bold tracking-[1px] mb-2 leading-tight uppercase">
                 {step.title}
               </h3>
-              <p className="text-gray-500">{step.description}</p>
+              <p className={sectionDescClass}>{step.description}</p>
             </div>
           ))}
         </div>

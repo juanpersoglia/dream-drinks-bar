@@ -1,13 +1,16 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export const Hero = () => {
   const [videoReady, setVideoReady] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
+  const [audioError, setAudioError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  /** Si el usuario apagó el audio a propósito, no lo volvemos a forzar */
+  const userStoppedRef = useRef(false);
 
   // Prevent browser from restoring previous scroll position
   useEffect(() => {
@@ -15,16 +18,88 @@ export const Hero = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const toggleAudio = () => {
+  const startAudio = useCallback(async () => {
+    const audio = audioRef.current;
+    if (!audio || userStoppedRef.current) return false;
+
+    try {
+      audio.volume = 0.7;
+      await audio.play();
+      setAudioError(false);
+      return true;
+    } catch {
+      return false;
+    }
+  }, []);
+
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (audioPlaying) {
-      audio.pause();
+
+    const onPlay = () => setAudioPlaying(true);
+    const onPause = () => setAudioPlaying(false);
+    const onError = () => {
       setAudioPlaying(false);
-    } else {
-      audio.play().catch(() => {});
-      setAudioPlaying(true);
+      setAudioError(true);
+    };
+
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("error", onError);
+    return () => {
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("error", onError);
+    };
+  }, []);
+
+  // Autoplay al entrar (si el browser lo bloquea, arranca en la 1ª interacción)
+  useEffect(() => {
+    let unlocked = false;
+
+    const tryStart = async () => {
+      if (unlocked || userStoppedRef.current) return;
+      const ok = await startAudio();
+      if (ok) {
+        unlocked = true;
+        removeListeners();
+      }
+    };
+
+    const onGesture = () => {
+      void tryStart();
+    };
+
+    const removeListeners = () => {
+      window.removeEventListener("pointerdown", onGesture);
+      window.removeEventListener("keydown", onGesture);
+      window.removeEventListener("touchstart", onGesture);
+      window.removeEventListener("scroll", onGesture);
+    };
+
+    void tryStart();
+
+    window.addEventListener("pointerdown", onGesture, { passive: true });
+    window.addEventListener("keydown", onGesture);
+    window.addEventListener("touchstart", onGesture, { passive: true });
+    window.addEventListener("scroll", onGesture, { passive: true });
+
+    return removeListeners;
+  }, [startAudio]);
+
+  const toggleAudio = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (!audio.paused) {
+      userStoppedRef.current = true;
+      audio.pause();
+      return;
     }
+
+    userStoppedRef.current = false;
+    const ok = await startAudio();
+    if (!ok) setAudioError(true);
   };
 
   const whatsappNumber = "+5493794347949";
@@ -35,10 +110,16 @@ export const Hero = () => {
   )}`;
 
   return (
-    <section className="relative h-screen flex items-center justify-center bg-black">
+    <section className="relative h-screen flex items-center justify-center bg-surface">
 
-      {/* Ambient audio — place stay-inside.mp3 in /public/assets/audio/ */}
-      <audio ref={audioRef} src="/assets/audio/stay-inside.mp3" loop preload="none" />
+      <audio
+        ref={audioRef}
+        src="/assets/audio/stay-inside.mp3"
+        loop
+        preload="auto"
+        playsInline
+        autoPlay
+      />
 
       {/* Video — starts invisible, fades in when ready. Scale hides watermark. */}
       <div className="absolute inset-0 overflow-hidden">
@@ -63,6 +144,13 @@ export const Hero = () => {
         onClick={toggleAudio}
         className="absolute bottom-8 left-6 z-20 flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors duration-300 text-xs group"
         aria-label={audioPlaying ? "Silenciar música" : "Reproducir música"}
+        title={
+          audioError
+            ? "No se encontró el audio (public/assets/audio/stay-inside.mp3)"
+            : audioPlaying
+              ? "Apagar música"
+              : "Encender música"
+        }
       >
         {audioPlaying ? (
           <>
@@ -79,7 +167,9 @@ export const Hero = () => {
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.064A4 4 0 108 17V8.82l8-1.6V13.064A4 4 0 1020 15V3h-2z" />
             </svg>
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">Stay Inside — Sandy Rivera</span>
+            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              {audioError ? "Audio no disponible" : "Stay Inside — Sandy Rivera"}
+            </span>
           </>
         )}
       </button>
@@ -98,7 +188,7 @@ export const Hero = () => {
           />
         </div>
 
-        <p className="text-gray-200 mb-8 max-w-xl leading-relaxed">
+        <p className="text-white mb-8 max-w-xl uppercase text-[10px] tracking-[0.08em] font-medium leading-relaxed">
           Experiencias que transforman cada celebración en un momento inolvidable.
         </p>
 

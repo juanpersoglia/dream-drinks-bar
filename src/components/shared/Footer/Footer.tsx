@@ -26,7 +26,7 @@ export const Footer = () => {
                   href="https://github.com/juanpersoglia" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-yellow-400 hover:text-yellow-300 font-medium transition-colors"
+                  className="text-gold-400 hover:text-gold-300 font-medium transition-colors"
                 >
                   Juan Salvador Persoglia
                 </Link>

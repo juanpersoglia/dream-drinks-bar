@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
+import { SectionHeader } from "@/components/shared/SectionHeader";
 import { serviciosData } from "../Servicios/serviciosData";
 
 export const NuestrasBarras = () => {
@@ -71,17 +72,13 @@ export const NuestrasBarras = () => {
   };
 
   return (
-    <section id="nuestras-barras" className="py-20 px-2 md:px-4 bg-zinc-900">
+    <section id="nuestras-barras" className="py-20 px-2 md:px-4 bg-surface-soft">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="mb-4">Nuestras Barras</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Cada barra es una pieza pensada para acompañar el espacio, ordenar el
-            servicio y potenciar la experiencia del invitado.
-          </p>
-        </div>
+        <SectionHeader
+          title="Nuestras Barras"
+          description="Cada barra es una pieza pensada para acompañar el espacio, ordenar el servicio y potenciar la experiencia del invitado."
+        />
 
         {/* Carousel */}
         <div
@@ -168,13 +165,13 @@ export const NuestrasBarras = () => {
               onClick={() => { stopAuto(); scrollTo(i); startAuto(); }}
               aria-label={`Ir a barra ${i + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === current ? "w-6 bg-yellow-400" : "w-1.5 bg-white/25"
+                i === current ? "w-6 bg-gold-400" : "w-1.5 bg-white/25"
               }`}
             />
           ))}
         </div>
 
-        <p className="text-center text-gray-600 text-[10px] mt-6">
+        <p className="text-center text-gray-400 text-[10px] mt-6">
           La disponibilidad de cada modelo se confirma al momento de la reserva.
         </p>
       </div>

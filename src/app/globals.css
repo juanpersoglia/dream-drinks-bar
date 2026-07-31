@@ -4,6 +4,13 @@
   --background: #000000;
   --foreground: #ffffff;
   --font-montserrat: var(--font-montserrat);
+  /* Superficies — tomatealgo.com.ar (#000 / #151515) */
+  --surface: #000000;
+  --surface-soft: #151515;
+  /* Dorado extraído de modalidades.png */
+  --brand-gold: #c8a353;
+  --brand-gold-bright: #e3be6a;
+  --brand-gold-deep: #a87820;
   /* Escala tipográfica alineada a tomatealgo.com.ar (base body 12px) */
   --text-body: 12px;
   --text-copy: 1.1em; /* ~13.2px */
@@ -12,6 +19,21 @@
   --text-h3: 1.5em; /* ~18px */
   --text-h2-mobile: 1.8em; /* ~21.6px */
   --text-h2-desktop: 2.4em; /* ~28.8px */
+}
+
+@theme {
+  --color-surface: #000000;
+  --color-surface-soft: #151515;
+  --color-gold-50: #faf6eb;
+  --color-gold-100: #f5ecd3;
+  --color-gold-200: #efd9a0;
+  --color-gold-300: #e3be6a;
+  --color-gold-400: #c8a353;
+  --color-gold-500: #a87820;
+  --color-gold-600: #8a6418;
+  --color-gold-700: #6b4d12;
+  --color-gold-800: #4d370d;
+  --color-gold-900: #2e2108;
 }
 
 html {
@@ -26,7 +48,7 @@ html {
 }
 
 body {
-  background: #000000;
+  background: var(--surface);
   color: var(--foreground);
   font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
   font-size: var(--text-body);

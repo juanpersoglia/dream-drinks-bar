@@ -2,48 +2,35 @@
 
 import Image from "next/image";
 import { useRef, useState, useCallback, useEffect } from "react";
+import { SectionHeader } from "@/components/shared/SectionHeader";
 
 const testimonios = [
   {
-    nombre: "María & Juan",
+    nombre: "Victoria Iturriaga",
     evento: "Boda · Corrientes",
     texto:
-      "Desde el primer contacto hasta el último cóctel, todo fue impecable. La barra fue uno de los grandes atractivos de la noche y nuestros invitados no dejaron de felicitarnos.",
+      "Hola Seba!! Te quería agradecer por todo, todos los comentarios de la gente muy buenos y todos hablando súper bien de la barra y los tragos.  Y gracias por estar también vos hasta el final!! Todo espectacular!!!.",
     estrellas: 5,
   },
   {
-    nombre: "Valentina M.",
+    nombre: "Rocío Delsin",
     evento: "Fiesta de 15 · Corrientes",
     texto:
-      "La barra fue lo que más comentaron todos los invitados. Los bartenders increíbles, atentos y con una presencia impecable. ¡Volvería a contratarlos sin dudar!",
+      "Seba quiero agradecerte por la atención de ayer y por estar en todos los detalles!! La barra fue un éxito!!  E staban todos alrededor de esa barra no se movían de ahí!!! Tu gente recontra laburando, atendiendo a todos los jóvenes y a los adultos también excelente su servicio!! Y sobre todo la calidez humana!! Muy agradecida Seba!! Un placer haber trabajado con Ustedes!",
     estrellas: 5,
   },
   {
-    nombre: "Rodrigo P.",
+    nombre: "Guadalupe Altube",
     evento: "Evento corporativo",
     texto:
-      "Profesionales de verdad. Llegaron antes, montaron todo sin inconvenientes y el servicio fue de primer nivel. Los cócteles, espectaculares.",
+      "Espectacular, todo como todos los años!! No hubo absolutamente ninguna queja de la gente!! Nos atendieron súper bien, nos llevaron los Aperol,  nos sirvieron en bandeja, súper bien preparado riquísimo!! Así que espectacular, solamente felicitaciones y agradecimientos!!!",
     estrellas: 5,
   },
   {
-    nombre: "Luciana F.",
+    nombre: "Johana Yaccuzzi",
     evento: "Fiesta de 15",
     texto:
-      "Mis invitados no paraban de hablar de la barra. El carrito de gin fue un hit total. Muy recomendables, superaron todas mis expectativas.",
-    estrellas: 5,
-  },
-  {
-    nombre: "Martín G.",
-    evento: "Cumpleaños · Resistencia",
-    texto:
-      "Desde la propuesta inicial hasta el último trago, todo fue perfecto. Atención personalizada y un resultado que realmente elevó el evento.",
-    estrellas: 5,
-  },
-  {
-    nombre: "Carolina S.",
-    evento: "Aniversario · Corrientes",
-    texto:
-      "Elegancia, profesionalismo y sabor en cada detalle. Nuestros invitados quedaron encantados y nosotros no podríamos haber pedido más.",
+      "Seba cómo estás? Nada más que palabras de agradecimiento saben el cariño que le tenemos toda la familia! Agradecerle la predisposición la buena onda. Fran estaba feliz, que era lo que nos importaba a todos! Me alegro mucho que hayan sido ustedes quienes estaban ahí desde su trabajo y también desde la presencia y nada muy muy felices de toda la gente estaba súper conforme como siempre su trabajo, es impecable!!! Es un placer contratarlos. Gracias gracias y gracias!!!",
     estrellas: 5,
   },
 ];
@@ -60,7 +47,7 @@ const empresas = [
 ];
 
 const StarIcon = () => (
-  <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+  <svg className="w-4 h-4 text-gold-400" fill="currentColor" viewBox="0 0 20 20">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
   </svg>
 );
@@ -99,7 +86,7 @@ export const Testimonios = () => {
   const next = () => scrollTo((current + 1) % testimonios.length);
 
   return (
-    <section id="testimonios" className="py-20 bg-zinc-900">
+    <section id="testimonios" className="py-20 bg-surface-soft">
       <style>{`
         .testimonios-scroll { scrollbar-width: none; -ms-overflow-style: none; }
         .testimonios-scroll::-webkit-scrollbar { display: none; }
@@ -121,15 +108,11 @@ export const Testimonios = () => {
 
       <div className="max-w-6xl mx-auto px-4 md:px-6">
 
-        {/* Header */}
-        <div className="text-center mb-14">
-          <h2 className="mb-4">Lo que dicen quienes confiaron en nosotros</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            La mayor satisfacción de nuestro trabajo es formar parte de momentos únicos y
-            superar las expectativas de cada cliente. Estas son algunas de las experiencias de
-            quienes eligieron Dream Drinks para sus eventos.
-          </p>
-        </div>
+        <SectionHeader
+          className="mb-14"
+          title="Lo que dicen quienes confiaron en nosotros"
+          description="La mayor satisfacción de nuestro trabajo es formar parte de momentos únicos y superar las expectativas de cada cliente. Estas son algunas de las experiencias de quienes eligieron Dream Drinks para sus eventos."
+        />
 
         {/* Carousel */}
         <div className="relative">
@@ -154,7 +137,7 @@ export const Testimonios = () => {
               <div
                 key={i}
                 style={{ scrollSnapAlign: "start" }}
-                className="flex-shrink-0 w-[82vw] sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-14px)] bg-white/[0.04] border border-white/8 rounded-2xl p-7 flex flex-col gap-5 hover:border-yellow-400/25 transition-all duration-300"
+                className="flex-shrink-0 w-[82vw] sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-14px)] bg-white/[0.04] border border-white/8 rounded-2xl p-7 flex flex-col gap-5 hover:border-gold-400/25 transition-all duration-300"
               >
                 {/* Stars */}
                 <div className="flex gap-0.5">
@@ -170,12 +153,12 @@ export const Testimonios = () => {
 
                 {/* Client */}
                 <div className="flex items-center gap-3 pt-2 border-t border-white/5">
-                  <div className="w-9 h-9 rounded-full bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
-                    <span className="text-yellow-400 font-bold">{t.nombre[0]}</span>
-                  </div>
+                  {/* <div className="w-9 h-9 rounded-full bg-gold-400/15 flex items-center justify-center flex-shrink-0">
+                    <span className="text-gold-400 font-bold">{t.nombre[0]}</span>
+                  </div> */}
                   <div>
                     <p className="text-white font-semibold leading-tight">{t.nombre}</p>
-                    <p className="text-yellow-400/60 text-[10px] mt-0.5">{t.evento}</p>
+                    {/* <p className="text-gold-400/60 text-[10px] mt-0.5">{t.evento}</p> */}
                   </div>
                 </div>
               </div>
@@ -201,7 +184,7 @@ export const Testimonios = () => {
               key={i}
               onClick={() => scrollTo(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === current ? "w-6 bg-yellow-400" : "w-1.5 bg-white/20"
+                i === current ? "w-6 bg-gold-400" : "w-1.5 bg-white/20"
               }`}
               aria-label={`Ir al testimonio ${i + 1}`}
             />
@@ -209,30 +192,30 @@ export const Testimonios = () => {
         </div>
 
         {/* Footer text */}
-        <p className="text-center text-gray-500 mt-12 max-w-2xl mx-auto">
+        <p className="text-center text-gray-400 mt-12 max-w-2xl mx-auto uppercase text-[10px] tracking-[0.08em] font-medium leading-relaxed">
           * Más de 850 eventos realizados y cientos de clientes que confiaron en nosotros para
           acompañar algunos de los momentos más importantes de sus vidas.
         </p>
 
         {/* Empresas que confiaron */}
         <div className="border-t border-white/8 pt-14 mt-14 overflow-hidden">
-          <p className="text-center text-gray-500 text-[10px] uppercase tracking-[2px] mb-10">
+          <p className="text-center text-gray-400 text-[10px] uppercase tracking-[0.08em] font-medium mb-10">
             Empresas que confiaron en nosotros
           </p>
           <div className="overflow-hidden">
-            <div className="marquee-track flex items-center gap-24 md:gap-36 w-max">
+            <div className="marquee-track flex items-center gap-16 md:gap-24 w-max">
               {[...empresas, ...empresas].map((empresa, i) => (
                 <div
                   key={`${empresa.nombre}-${i}`}
-                  className="flex-shrink-0 flex items-center justify-center h-12 md:h-14"
+                  className="flex-shrink-0 flex items-center justify-center w-[110px] md:w-[130px] h-12 md:h-14"
                   title={empresa.nombre}
                 >
                   <Image
                     src={empresa.src}
                     alt={empresa.nombre}
-                    width={160}
+                    width={130}
                     height={56}
-                    className="empresa-logo h-10 md:h-12 w-auto max-w-[140px] md:max-w-[160px] object-contain"
+                    className="empresa-logo w-full h-full object-contain"
                   />
                 </div>
               ))}
