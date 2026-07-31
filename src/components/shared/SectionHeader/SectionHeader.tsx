@@ -24,12 +24,12 @@ export const SectionHeader = ({
 
   return (
     <div className={`${alignClass} mb-10 ${className}`}>
+      <h2 className={`${subtitle || description ? "mb-3" : "mb-0"} uppercase`}>{title}</h2>
       {eyebrow ? (
         <p className="text-[10px] tracking-[0.08em] uppercase text-gray-400 font-medium mb-4">
           {eyebrow}
         </p>
       ) : null}
-      <h2 className={`${subtitle || description ? "mb-3" : "mb-0"} uppercase`}>{title}</h2>
       {subtitle ? (
         <p className="mb-4 text-gray-300 uppercase">{subtitle}</p>
       ) : null}

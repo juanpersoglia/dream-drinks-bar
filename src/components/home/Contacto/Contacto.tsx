@@ -10,7 +10,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 const contactLinks = [
   {
     label: "Instagram",
-    href: "https://instagram.com/dreamdrinks.bar",
+    href: "https://www.instagram.com/dreamdrinksbar/",
     external: true,
     icon: (
       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -29,8 +29,8 @@ const contactLinks = [
     ),
   },
   {
-    label: "Mail",
-    href: "mailto:info@dreamdrinks.com.ar",
+    label: "Email",
+    href: "mailto:dreamdrinksbar@gmail.com",
     external: false,
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -46,12 +46,8 @@ export const Contacto = () => {
       <div className="max-w-3xl mx-auto px-4 md:px-6 text-center">
 
         <SectionHeader
-          title={
-            <>
-              Hablemos de tu<br />próximo evento.
-            </>
-          }
-          eyebrow="Contacto"
+          title="Contacto"
+          eyebrow="Hablemos de tu próximo evento"
           description="Contanos los detalles de tu celebración y te armamos una propuesta a medida, sin compromiso."
         />
 
