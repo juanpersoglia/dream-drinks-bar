@@ -203,7 +203,7 @@ export const Testimonios = () => {
             Empresas que confiaron en nosotros
           </p>
           <div className="overflow-hidden">
-            <div className="marquee-track flex items-center gap-16 md:gap-24 w-max">
+            <div className="marquee-track flex items-center gap-8 md:gap-24 w-max">
               {[...empresas, ...empresas].map((empresa, i) => (
                 <div
                   key={`${empresa.nombre}-${i}`}
